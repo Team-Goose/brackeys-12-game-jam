@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk6xjow2pelx8"]
+
+[ext_resource type="Script" path="res://scenes/chance_box.gd" id="1_6as6u"]
+
+[sub_resource type="Gradient" id="Gradient_t5ksv"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h4rai"]
+gradient = SubResource("Gradient_t5ksv")
+
+[node name="ChanceBox" type="Sprite2D"]
+texture = SubResource("GradientTexture2D_h4rai")
+region_rect = Rect2(0, 0, 64, 64)
+script = ExtResource("1_6as6u")
