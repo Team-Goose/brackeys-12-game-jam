@@ -1,14 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk6xjow2pelx8"]
+[gd_scene load_steps=6 format=3 uid="uid://dk6xjow2pelx8"]
 
 [ext_resource type="Script" path="res://scenes/chance_box.gd" id="1_6as6u"]
 
-[sub_resource type="Gradient" id="Gradient_t5ksv"]
+[sub_resource type="Gradient" id="Gradient_xduyd"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_h4rai"]
-gradient = SubResource("Gradient_t5ksv")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p2ki4"]
+gradient = SubResource("Gradient_xduyd")
 
-[node name="ChanceBox" type="Sprite2D"]
-texture = SubResource("GradientTexture2D_h4rai")
-region_rect = Rect2(0, 0, 64, 64)
+[sub_resource type="Gradient" id="Gradient_6dsoe"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6tgfy"]
+gradient = SubResource("Gradient_6dsoe")
+
+[node name="ChanceBox" type="Node2D"]
 script = ExtResource("1_6as6u")
+
+[node name="BaseTreeSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_p2ki4")
+
+[node name="HoldSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_6tgfy")
