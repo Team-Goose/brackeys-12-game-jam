@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://dm4ge2oi5gmkp"]
+[gd_scene load_steps=2 format=3 uid="uid://dm4ge2oi5gmkp"]
+
+[ext_resource type="PackedScene" uid="uid://dg56ufx63qgem" path="res://scenes/tree_hold_mapper.tscn" id="1_o80iv"]
 
 [node name="Game" type="Node2D"]
+
+[node name="TreeHoldMapper" parent="." instance=ExtResource("1_o80iv")]
