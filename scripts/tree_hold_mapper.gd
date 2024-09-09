@@ -33,6 +33,7 @@ func _ready() -> void:
 			add_tree_cell(i, cells_in_height)
 			cells_in_height += 1
 
+# debug function for generating new rows of the tree:
 #func _input(event) -> void:
 	#var instance: TreeCell = tree_cell.instantiate()
 	#var rect: Rect2 = instance.get_rect()
