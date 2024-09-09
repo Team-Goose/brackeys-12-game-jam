@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dm4ge2oi5gmkp"]
+[gd_scene load_steps=4 format=3 uid="uid://dm4ge2oi5gmkp"]
 
-[ext_resource type="Script" path="res://wind.gd" id="1_2yvb3"]
+[ext_resource type="Script" path="res://scripts/wind.gd" id="1_2yvb3"]
+[ext_resource type="PackedScene" uid="uid://dg56ufx63qgem" path="res://scenes/tree_hold_mapper.tscn" id="1_o80iv"]
+[ext_resource type="Script" path="res://game.gd" id="1_vwq8j"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_vwq8j")
+
+[node name="TreeHoldMapper" parent="." instance=ExtResource("1_o80iv")]
 
 [node name="Wind" type="Node" parent="."]
 script = ExtResource("1_2yvb3")
