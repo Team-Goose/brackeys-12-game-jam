@@ -4,11 +4,15 @@ var rng = RandomNumberGenerator.new()
 
 const BOXES_PER_ROW := 12
 const NUM_ROWS := 5
+const GOOD_HOLD_THRESHOLD := 0.1
+const HOW_GOOD_THRESHOLD := 0.4
+
+# effectively a const but const doesn't get along with PackedFloat32Array for some reason
+var weights := PackedFloat32Array([1.0, 0.8, 0.7, 0.5])
 
 var start_x := 0
 var start_y := 0
 
-var weights := PackedFloat32Array([1.0, 0.8, 0.7, 0.5])
 var grid = []
 
 func _ready() -> void:
@@ -29,15 +33,20 @@ func _ready() -> void:
 				start_y -= rect.size.y / 2
 			instance.global_position = Vector2(start_x + (i * rect.size.x), start_y - (j * rect.size.y))
 			var good_hold_chance = randf()
-			if good_hold_chance >= 0.9:
+			if good_hold_chance <= GOOD_HOLD_THRESHOLD:
 				var how_good_chance = randf()
-				if how_good_chance >= 0.6:
-					instance.hold_strength = 9
+				if how_good_chance <= HOW_GOOD_THRESHOLD:
+					instance.hold_strength = instance.GREAT_HOLD_THRESHOLD
 				else:
-					instance.hold_strength = 7
+					instance.hold_strength = instance.DECENT_HOLD_THRESHOLD
 			else:
 				instance.hold_strength = strength
-			instance.set_atlas_regions(atlas_texture)
+			if i == 0:
+				instance.set_side_sprite(atlas_texture, "left")
+			elif i == BOXES_PER_ROW - 1:
+				instance.set_side_sprite(atlas_texture, "right")
+			else:
+				instance.set_atlas_regions(atlas_texture)
 			add_child(instance)
 			grid.append(instance)
 	
