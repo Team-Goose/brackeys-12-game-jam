@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk6xjow2pelx8"]
+[gd_scene load_steps=8 format=3 uid="uid://dk6xjow2pelx8"]
 
 [ext_resource type="Script" path="res://scripts/tree_cell.gd" id="1_pa26y"]
+[ext_resource type="Script" path="res://scripts/cell_click_area.gd" id="2_kwnbr"]
 
 [sub_resource type="Gradient" id="Gradient_xduyd"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -14,6 +15,9 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6tgfy"]
 gradient = SubResource("Gradient_6dsoe")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rhla"]
+size = Vector2(128, 128)
+
 [node name="TreeCell" type="Node2D"]
 script = ExtResource("1_pa26y")
 
@@ -26,3 +30,13 @@ texture = SubResource("GradientTexture2D_p2ki4")
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_6tgfy")
+
+[node name="CellClickArea" type="Area2D" parent="."]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_kwnbr")
+
+[node name="CellClickShape" type="CollisionShape2D" parent="CellClickArea"]
+shape = SubResource("RectangleShape2D_7rhla")
+
+[connection signal="area_l_clicked" from="CellClickArea" to="." method="_on_cell_l_clicked"]
+[connection signal="area_r_clicked" from="CellClickArea" to="." method="_on_cell_r_clicked"]

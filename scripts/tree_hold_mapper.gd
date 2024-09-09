@@ -2,6 +2,9 @@ extends Node2D
 
 var rng := RandomNumberGenerator.new()
 
+signal cell_l_clicked(cell: TreeCell)
+signal cell_r_clicked(cell: TreeCell)
+
 const BOXES_PER_ROW := 12
 const NUM_ROWS := 5
 const GOOD_HOLD_THRESHOLD := 0.1
@@ -34,7 +37,7 @@ func _ready() -> void:
 			cells_in_height += 1
 
 # debug function for generating new rows of the tree:
-#func _input(event) -> void:
+#func _input(event: InputEvent) -> void:
 	#var instance: TreeCell = tree_cell.instantiate()
 	#var rect: Rect2 = instance.get_rect()
 	#if event.is_action_pressed("up"):
@@ -70,5 +73,11 @@ func add_tree_cell(i: int, j: int) -> void:
 		instance.set_side_sprite(atlas_texture, "right")
 	else:
 		instance.set_atlas_regions(atlas_texture)
+	instance.cell_l_clicked.connect(func(cell: TreeCell):
+		cell_l_clicked.emit(cell)
+	)
+	instance.cell_r_clicked.connect(func(cell: TreeCell):
+		cell_r_clicked.emit(cell)
+	)
 	add_child(instance)
 	grid[i].append(instance)
