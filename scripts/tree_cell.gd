@@ -1,4 +1,4 @@
-class_name ChanceBox extends Node2D
+class_name TreeCell extends Node2D
 
 var rng = RandomNumberGenerator.new()
 

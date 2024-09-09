@@ -16,13 +16,13 @@ var start_y := 0
 var grid = []
 
 func _ready() -> void:
-	var chance_box = preload("res://scenes/chance_box.tscn")
+	var chance_box = preload("res://scenes/tree_cell.tscn")
 	var atlas_texture = load("res://assets/tree_sprite_sheet.png")
 	for i in BOXES_PER_ROW:
 		grid.append([])
 		for j in NUM_ROWS:
 			var strength = rng.rand_weighted(weights)
-			var instance: ChanceBox = chance_box.instantiate()
+			var instance: TreeCell = chance_box.instantiate()
 			var rect: Rect2 = instance.get_rect()
 			# alter the overall start positions based on the box size when looking at the first box 
 			if i == 0 && j == 0:

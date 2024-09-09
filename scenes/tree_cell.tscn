@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dk6xjow2pelx8"]
 
-[ext_resource type="Script" path="res://scripts/chance_box.gd" id="1_6as6u"]
+[ext_resource type="Script" path="res://scripts/tree_cell.gd" id="1_pa26y"]
 
 [sub_resource type="Gradient" id="Gradient_xduyd"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -14,8 +14,8 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6tgfy"]
 gradient = SubResource("Gradient_6dsoe")
 
-[node name="ChanceBox" type="Node2D"]
-script = ExtResource("1_6as6u")
+[node name="TreeCell" type="Node2D"]
+script = ExtResource("1_pa26y")
 
 [node name="BaseTreeSprite" type="Sprite2D" parent="."]
 texture_filter = 1
