@@ -2,6 +2,9 @@ class_name TreeCell extends Node2D
 
 var rng = RandomNumberGenerator.new()
 
+signal cell_l_clicked(cell: TreeCell)
+signal cell_r_clicked(cell: TreeCell)
+
 const NORMAL_ATLAS_REGIONS := [
 	Rect2(0, 0, 32, 32), # normal wood
 	Rect2(32, 0, 32, 32), # flowers
@@ -24,6 +27,12 @@ var normal_atlas_region_weights := PackedFloat32Array([1.0, 0.1, 0.1, 0.1])
 var hold_strength := 0.0
 var cell_x := 0
 var cell_y := 0
+
+func _on_cell_l_clicked() -> void:
+	cell_l_clicked.emit($".")
+
+func _on_cell_r_clicked() -> void:
+	cell_r_clicked.emit($".")
 
 func get_rect() -> Rect2:
 	return $BaseTreeSprite.get_rect()

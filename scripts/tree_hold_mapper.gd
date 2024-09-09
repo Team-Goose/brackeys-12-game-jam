@@ -2,6 +2,9 @@ class_name TreeHoldMapper extends Node2D
 
 var rng := RandomNumberGenerator.new()
 
+signal cell_l_clicked(cell: TreeCell)
+signal cell_r_clicked(cell: TreeCell)
+
 const BOXES_PER_ROW := 12
 const NUM_ROWS := 5
 const GOOD_HOLD_THRESHOLD := 0.1
