@@ -1,4 +1,4 @@
-extends Node2D
+class_name TreeHoldMapper extends Node2D
 
 var rng := RandomNumberGenerator.new()
 
@@ -18,7 +18,8 @@ var atlas_texture = load("res://assets/tree_sprite_sheet.png")
 var start_x := 0
 var start_y := 0
 var grid := []
-var next_row_to_delete := 0
+var next_row_to_delete := -1
+var bottom_cell := 0
 
 func _ready() -> void:
 	var instance: TreeCell = tree_cell.instantiate()
@@ -35,20 +36,30 @@ func _ready() -> void:
 		while cells_in_height * rect.size.y <= vp_rect.y:
 			add_tree_cell(i, cells_in_height)
 			cells_in_height += 1
+	# only delete cells that are far enough off the screen
+	#   for the camera not to clip them as it's moving:
+	next_row_to_delete = grid[0].size() * -2
 
-# debug function for generating new rows of the tree:
+# debug function for generating new rows of the tree on direction press:
 #func _input(event: InputEvent) -> void:
 	#var instance: TreeCell = tree_cell.instantiate()
 	#var rect: Rect2 = instance.get_rect()
 	#if event.is_action_pressed("up"):
-		#for i in grid.size():
-			#add_tree_cell(i, grid[i].size())
-			#grid[i][next_row_to_delete].queue_free()
-			#grid[i][next_row_to_delete] = null
-		#$TreeCam.global_position.y -= rect.size.y
-		#next_row_to_delete += 1
+		#add_tree_row()
 	#if event.is_action_pressed("down"):
 		#$TreeCam.global_position.y += rect.size.y
+
+func add_tree_row() -> void:
+	var instance: TreeCell = tree_cell.instantiate()
+	var rect: Rect2 = instance.get_rect()
+	for i in grid.size():
+		add_tree_cell(i, grid[i].size())
+		if next_row_to_delete >= 0:
+			grid[i][next_row_to_delete].queue_free()
+			grid[i][next_row_to_delete] = null
+	$TreeCam.global_position.y -= rect.size.y
+	next_row_to_delete += 1
+	bottom_cell += 1
 
 func add_tree_cell(i: int, j: int) -> void:
 	var instance: TreeCell = tree_cell.instantiate()
@@ -79,5 +90,7 @@ func add_tree_cell(i: int, j: int) -> void:
 	instance.cell_r_clicked.connect(func(cell: TreeCell):
 		cell_r_clicked.emit(cell)
 	)
+	instance.cell_x = i
+	instance.cell_y = j
 	add_child(instance)
 	grid[i].append(instance)

@@ -25,6 +25,8 @@ const SIDE_FLOWER_CHANCE := 0.1
 var normal_atlas_region_weights := PackedFloat32Array([1.0, 0.1, 0.1, 0.1])
 
 var hold_strength := 0.0
+var cell_x := 0
+var cell_y := 0
 
 func _on_cell_l_clicked() -> void:
 	cell_l_clicked.emit($".")
