@@ -8,6 +8,7 @@
 script = ExtResource("1_vwq8j")
 
 [node name="TreeHoldMapper" parent="." instance=ExtResource("1_o80iv")]
+unique_name_in_owner = true
 
 [node name="Wind" type="Node" parent="."]
 script = ExtResource("1_2yvb3")

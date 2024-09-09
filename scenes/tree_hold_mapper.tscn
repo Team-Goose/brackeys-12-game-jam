@@ -6,3 +6,5 @@
 script = ExtResource("1_h3l8u")
 
 [node name="TreeCam" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+position_smoothing_enabled = true
