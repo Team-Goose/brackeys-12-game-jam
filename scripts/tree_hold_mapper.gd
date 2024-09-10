@@ -40,15 +40,6 @@ func _ready() -> void:
 	#   for the camera not to clip them as it's moving:
 	next_row_to_delete = grid[0].size() * -2
 
-# debug function for generating new rows of the tree on direction press:
-#func _input(event: InputEvent) -> void:
-	#var instance: TreeCell = tree_cell.instantiate()
-	#var rect: Rect2 = instance.get_rect()
-	#if event.is_action_pressed("up"):
-		#add_tree_row()
-	#if event.is_action_pressed("down"):
-		#$TreeCam.global_position.y += rect.size.y
-
 func add_tree_row() -> void:
 	var instance: TreeCell = tree_cell.instantiate()
 	var rect: Rect2 = instance.get_rect()
