@@ -1,0 +1,124 @@
+[gd_scene load_steps=5 format=3 uid="uid://ntqqbybbesk5"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_5eync"]
+[ext_resource type="Theme" uid="uid://cqwe3e4u4fdxp" path="res://assets/main_menu_theme.tres" id="1_qvmq3"]
+
+[sub_resource type="SystemFont" id="SystemFont_8wopw"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_e7c7o"]
+font = SubResource("SystemFont_8wopw")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_qvmq3")
+script = ExtResource("1_5eync")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.305177, 0.100337, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+offset_right = 467.0
+offset_bottom = 94.0
+
+[node name="Label" type="Label" parent="ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LOGO HERE"
+label_settings = SubResource("LabelSettings_e7c7o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.667
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/v_separation = 15
+
+[node name="EmptyPanel1" type="Control" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EmptyPanel2" type="Control" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayPanel" type="Panel" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayButton" type="Button" parent="GridContainer/PlayPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Play!"
+
+[node name="OptionsPanel" type="Panel" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="OptionsButton" type="Button" parent="GridContainer/OptionsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Options..."
+
+[node name="QuitPanel" type="Panel" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="QuitButton" type="Button" parent="GridContainer/QuitPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Quit :("
+
+[node name="EmptyPanel3" type="Control" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="GridContainer/PlayPanel/PlayButton" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="GridContainer/OptionsPanel/OptionsButton" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="GridContainer/QuitPanel/QuitButton" to="." method="_on_quit_pressed"]
