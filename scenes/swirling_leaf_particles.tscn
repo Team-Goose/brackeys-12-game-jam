@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwlggerxpgctb"]
+
+[ext_resource type="Script" path="res://scripts/swirling_leaf_particles.gd" id="1_dgqdl"]
+[ext_resource type="Texture2D" uid="uid://7bojyptu027s" path="res://assets/leaf_particle_sprite_sheet.png" id="1_yijy0"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_clhbd"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8q5np"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+anim_speed_min = 6.0
+anim_speed_max = 6.0
+
+[node name="SwirlingLeafParticles" type="Node2D"]
+script = ExtResource("1_dgqdl")
+
+[node name="SwirlingLeafGPUParticle" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 6.0
