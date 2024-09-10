@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsiiituya3btt"]
+
+[ext_resource type="Script" path="res://scripts/rain_particles.gd" id="1_w5yrw"]
+
+[node name="RainParticles" type="Node2D"]
+script = ExtResource("1_w5yrw")
+
+[node name="RainCPUParticle" type="CPUParticles2D" parent="."]
+amount = 35
+lifetime = 6.0
+gravity = Vector2(0, 100)
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
