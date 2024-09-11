@@ -2,12 +2,10 @@ extends Node
 
 func _ready() -> void:
 	%TreeHoldMapper.visible = false
-	%Storm.visible = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc"):
 		%TreeHoldMapper.visible = false
-		%Storm.visible = false
 		%MainMenu.visible = true
 
 func _on_cell_l_clicked(cell: TreeCell):
@@ -25,7 +23,6 @@ func _on_cell_r_clicked(cell: TreeCell):
 func _on_main_menu_play_pressed() -> void:
 	%MainMenu.visible = false
 	%TreeHoldMapper.visible = true
-	%Storm.visible = true
 
 func _on_main_menu_options_pressed() -> void:
 	print("options pressed") # TODO
