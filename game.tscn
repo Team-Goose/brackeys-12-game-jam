@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/wind.gd" id="1_2yvb3"]
 [ext_resource type="PackedScene" uid="uid://cmfpfrh6sjf03" path="res://scenes/tree_hold_mapper.tscn" id="1_o80iv"]
 [ext_resource type="Script" path="res://game.gd" id="1_vwq8j"]
-[ext_resource type="PackedScene" path="res://scenes/main_menu.tscn" id="4_ogkj4"]
+[ext_resource type="PackedScene" uid="uid://dq2mf370b64nx" path="res://scenes/main_menu.tscn" id="4_ogkj4"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_vwq8j")
