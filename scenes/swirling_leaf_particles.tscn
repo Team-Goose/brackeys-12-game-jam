@@ -11,71 +11,23 @@ particles_anim_loop = true
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8q5np"]
 particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(661, 1, 1)
 gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 2.0
 anim_speed_min = 6.0
 anim_speed_max = 6.0
 
 [node name="SwirlingLeafParticles" type="Node2D"]
 script = ExtResource("1_dgqdl")
 
-[node name="SwirlingLeafGPUParticle" type="GPUParticles2D" parent="."]
-texture_filter = 1
-material = SubResource("CanvasItemMaterial_clhbd")
-position = Vector2(-300, 0)
-amount = 4
-process_material = SubResource("ParticleProcessMaterial_8q5np")
-texture = ExtResource("1_yijy0")
-lifetime = 6.0
-
-[node name="SwirlingLeafGPUParticle2" type="GPUParticles2D" parent="."]
-texture_filter = 1
-material = SubResource("CanvasItemMaterial_clhbd")
-position = Vector2(-200, 0)
-amount = 4
-process_material = SubResource("ParticleProcessMaterial_8q5np")
-texture = ExtResource("1_yijy0")
-lifetime = 6.0
-
-[node name="SwirlingLeafGPUParticle3" type="GPUParticles2D" parent="."]
-texture_filter = 1
-material = SubResource("CanvasItemMaterial_clhbd")
-position = Vector2(-100, 0)
-amount = 4
-process_material = SubResource("ParticleProcessMaterial_8q5np")
-texture = ExtResource("1_yijy0")
-lifetime = 6.0
-
-[node name="SwirlingLeafGPUParticle4" type="GPUParticles2D" parent="."]
+[node name="SwirlingLeafGPUParticles" type="GPUParticles2D" parent="."]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_clhbd")
 amount = 4
 process_material = SubResource("ParticleProcessMaterial_8q5np")
 texture = ExtResource("1_yijy0")
 lifetime = 6.0
-
-[node name="SwirlingLeafGPUParticle5" type="GPUParticles2D" parent="."]
-texture_filter = 1
-material = SubResource("CanvasItemMaterial_clhbd")
-position = Vector2(100, 0)
-amount = 4
-process_material = SubResource("ParticleProcessMaterial_8q5np")
-texture = ExtResource("1_yijy0")
-lifetime = 6.0
-
-[node name="SwirlingLeafGPUParticle6" type="GPUParticles2D" parent="."]
-texture_filter = 1
-material = SubResource("CanvasItemMaterial_clhbd")
-position = Vector2(200, 0)
-amount = 4
-process_material = SubResource("ParticleProcessMaterial_8q5np")
-texture = ExtResource("1_yijy0")
-lifetime = 6.0
-
-[node name="SwirlingLeafGPUParticle7" type="GPUParticles2D" parent="."]
-texture_filter = 1
-material = SubResource("CanvasItemMaterial_clhbd")
-position = Vector2(300, 0)
-amount = 4
-process_material = SubResource("ParticleProcessMaterial_8q5np")
-texture = ExtResource("1_yijy0")
-lifetime = 6.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)

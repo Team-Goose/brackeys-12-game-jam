@@ -1,11 +1,13 @@
-class_name Wind extends Node
+class_name Wind extends Node2D
 
 var time_start = 0
 var wind = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	time_start = Time.get_ticks_msec()
+	time_start = Time.get_ticks_msec() / 1000.0
+	%RainParticles.intensity_drizzle()
+	%SwirlingLeafParticles.intensity_calm()
 
 func _physics_process(delta: float) -> void:
 	var time_now = Time.get_ticks_msec() / 1000.0
