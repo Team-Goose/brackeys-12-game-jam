@@ -1,13 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsiiituya3btt"]
+[gd_scene load_steps=5 format=3 uid="uid://bsiiituya3btt"]
 
 [ext_resource type="Script" path="res://scripts/rain_particles.gd" id="1_w5yrw"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0ri2l"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(661, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+
+[sub_resource type="Gradient" id="Gradient_ukgu4"]
+colors = PackedColorArray(0, 0.34902, 0.792157, 1, 0, 0.34902, 0.792157, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n0v15"]
+gradient = SubResource("Gradient_ukgu4")
+width = 2
+height = 2
 
 [node name="RainParticles" type="Node2D"]
 script = ExtResource("1_w5yrw")
 
-[node name="RainCPUParticle" type="CPUParticles2D" parent="."]
+[node name="RainCPUParticle1" type="CPUParticles2D" parent="."]
 amount = 50
 lifetime = 6.0
+local_coords = true
 emission_shape = 3
 emission_rect_extents = Vector2(661, 1)
 direction = Vector2(0, 1)
@@ -19,3 +39,955 @@ angular_velocity_min = -100.0
 angular_velocity_max = 100.0
 scale_amount_max = 3.0
 color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle2" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle3" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle4" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle5" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle6" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle7" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle8" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle9" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle10" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle11" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle12" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle13" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle14" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle15" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle16" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle17" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle18" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle19" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle20" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle21" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle22" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle23" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle24" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle25" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle26" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle27" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle28" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle29" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle30" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle31" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle32" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle33" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle34" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle35" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle36" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle37" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle38" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle39" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle40" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle41" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle42" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle43" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle44" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle45" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle46" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle47" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle48" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle49" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle50" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle51" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle52" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle53" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle54" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle55" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle56" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle57" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle58" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle59" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainCPUParticle60" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 6.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(661, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_max = 3.0
+color = Color(0.156863, 0.447059, 1, 1)
+
+[node name="RainGPUParticle" type="GPUParticles2D" parent="."]
+visible = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_0ri2l")
+texture = SubResource("GradientTexture2D_n0v15")
+lifetime = 6.0
+visibility_rect = Rect2(-100, -100, 200, 600)

@@ -26,10 +26,250 @@ anim_speed_max = 15.0
 [node name="SwirlingLeafParticles" type="Node2D"]
 script = ExtResource("1_dgqdl")
 
-[node name="SwirlingLeafGPUParticles" type="GPUParticles2D" parent="."]
+[node name="SwirlingLeafGPUParticles1" type="GPUParticles2D" parent="."]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_clhbd")
-amount = 4
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles2" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles3" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles4" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles5" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles6" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles7" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles8" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles9" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles10" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles11" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles12" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles13" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles14" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles15" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles16" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles17" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles18" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles19" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles20" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles21" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles22" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles23" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles24" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8q5np")
+texture = ExtResource("1_yijy0")
+lifetime = 15.0
+randomness = 1.0
+visibility_rect = Rect2(-100, -100, 200, 600)
+
+[node name="SwirlingLeafGPUParticles25" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_clhbd")
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_8q5np")
 texture = ExtResource("1_yijy0")
 lifetime = 15.0
