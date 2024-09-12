@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cogdeqoykfmnr"]
+
+[ext_resource type="Script" path="res://scripts/storm.gd" id="1_f32pk"]
+[ext_resource type="PackedScene" uid="uid://bsiiituya3btt" path="res://scenes/rain_particles.tscn" id="2_m0l1n"]
+[ext_resource type="PackedScene" uid="uid://cwlggerxpgctb" path="res://scenes/swirling_leaf_particles.tscn" id="3_ysxc0"]
+
+[node name="Storm" type="Node2D"]
+z_index = 5
+script = ExtResource("1_f32pk")
+
+[node name="ParticlePivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(576, 648)
+
+[node name="RainParticles" parent="ParticlePivot" instance=ExtResource("2_m0l1n")]
+unique_name_in_owner = true
+position = Vector2(0, -867)
+
+[node name="SwirlingLeafParticles" parent="ParticlePivot" instance=ExtResource("3_ysxc0")]
+unique_name_in_owner = true
+position = Vector2(0, -867)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmfpfrh6sjf03"]
+[gd_scene load_steps=3 format=3 uid="uid://cmfpfrh6sjf03"]
 
 [ext_resource type="Script" path="res://scripts/tree_hold_mapper.gd" id="1_h3l8u"]
+[ext_resource type="PackedScene" uid="uid://cogdeqoykfmnr" path="res://scenes/storm.tscn" id="2_oymix"]
 
 [node name="TreeHoldMapper" type="Node2D"]
 script = ExtResource("1_h3l8u")
@@ -8,3 +9,6 @@ script = ExtResource("1_h3l8u")
 [node name="TreeCam" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 position_smoothing_enabled = true
+
+[node name="Storm" parent="TreeCam" instance=ExtResource("2_oymix")]
+position = Vector2(-576, -324)

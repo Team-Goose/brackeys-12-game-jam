@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ntqqbybbesk5"]
+[gd_scene load_steps=5 format=3 uid="uid://dq2mf370b64nx"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_5eync"]
-[ext_resource type="Theme" uid="uid://cqwe3e4u4fdxp" path="res://assets/main_menu_theme.tres" id="1_qvmq3"]
+[ext_resource type="Theme" uid="uid://cr5mj0hosrwmu" path="res://assets/main_menu_theme.tres" id="1_qvmq3"]
 
 [sub_resource type="SystemFont" id="SystemFont_8wopw"]
 subpixel_positioning = 0
