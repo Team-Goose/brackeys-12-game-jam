@@ -1,5 +1,7 @@
 class_name TreeHoldMapper extends Node2D
 
+@onready var player = $Player
+
 var rng := RandomNumberGenerator.new()
 
 signal cell_l_clicked(cell: TreeCell)
@@ -29,7 +31,7 @@ func _ready() -> void:
 	start_x += rect.size.x / 2
 	start_y = vp_rect.y
 	start_y -= rect.size.y / 2
-	$TreeCam.global_position = Vector2(vp_rect.x / 2, vp_rect.y / 2)
+	#player.global_position = Vector2(vp_rect.x / 2, vp_rect.y / 2)
 	for i in BOXES_PER_ROW:
 		grid.append([])
 		var cells_in_height := 0
@@ -41,6 +43,7 @@ func _ready() -> void:
 	next_row_to_delete = grid[0].size() * -2
 
 func add_tree_row() -> void:
+	print("add row", start_x, start_y)
 	var instance: TreeCell = tree_cell.instantiate()
 	var rect: Rect2 = instance.get_rect()
 	for i in grid.size():
@@ -48,7 +51,7 @@ func add_tree_row() -> void:
 		if next_row_to_delete >= 0:
 			grid[i][next_row_to_delete].queue_free()
 			grid[i][next_row_to_delete] = null
-	$TreeCam.global_position.y -= rect.size.y
+	#camera.global_position.y -= rect.size.y
 	next_row_to_delete += 1
 	bottom_cell += 1
 
@@ -79,6 +82,7 @@ func add_tree_cell(i: int, j: int) -> void:
 		cell_l_clicked.emit(cell)
 	)
 	instance.cell_r_clicked.connect(func(cell: TreeCell):
+		print("asdf")
 		cell_r_clicked.emit(cell)
 	)
 	instance.cell_x = i
