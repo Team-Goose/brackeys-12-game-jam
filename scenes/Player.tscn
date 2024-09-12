@@ -24,10 +24,11 @@ script = ExtResource("1_qp6hn")
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_46w7h")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Forg"]
+scale = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 
-[node name="Storm" parent="Camera2D" instance=ExtResource("2_xbypt")]
+[node name="Storm" parent="Forg/Camera2D" instance=ExtResource("2_xbypt")]
 position = Vector2(-576, -324)
 
 [node name="LHand" type="Sprite2D" parent="."]

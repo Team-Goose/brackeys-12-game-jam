@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var forg = $Forg
 @onready var lhand = $LHand
 @onready var rhand = $RHand
 
@@ -15,10 +16,7 @@ func _input(event: InputEvent) -> void:
 		var result = get_world_2d().direct_space_state.intersect_point(params, 1)
 		if result.size() == 1:
 			move_hand(active_hand_left, result.front().collider.global_position)
-		
-		active_hand_left = !active_hand_left
-		
-		global_position.y -= 50
+			active_hand_left = !active_hand_left
 
 func _process(delta: float) -> void:
 	move_hand(active_hand_left, get_global_mouse_position())
@@ -29,3 +27,4 @@ func move_hand(hand: bool, pos: Vector2):
 		lhand.global_position = pos
 	else:
 		rhand.global_position = pos
+	forg.global_position = lhand.global_position/2 + rhand.global_position/2
