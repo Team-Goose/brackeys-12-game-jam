@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmfpfrh6sjf03"]
 
 [ext_resource type="Script" path="res://scripts/tree_hold_mapper.gd" id="1_h3l8u"]
-[ext_resource type="PackedScene" uid="uid://tak0406ssi1m" path="res://scenes/Player.tscn" id="2_qo1ug"]
+[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="2_qo1ug"]
 
 [node name="TreeHoldMapper" type="Node2D"]
 script = ExtResource("1_h3l8u")

@@ -4,7 +4,7 @@ var intensity := 0
 
 func intensity_off() -> void:
 	if intensity != 0:
-		for i in 60:
+		for i in 25:
 			var n: GPUParticles2D = get_node("SwirlingLeafGPUParticles" + str(i + 1))
 			n.emitting = false
 		#$SwirlingLeafGPUParticles.amount = 0
