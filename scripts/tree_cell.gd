@@ -32,7 +32,6 @@ func _on_cell_l_clicked() -> void:
 	cell_l_clicked.emit($".")
 
 func _on_cell_r_clicked() -> void:
-	print("asdf")
 	cell_r_clicked.emit($".")
 
 func get_rect() -> Rect2:

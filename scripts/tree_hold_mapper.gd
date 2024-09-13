@@ -43,7 +43,6 @@ func _ready() -> void:
 	next_row_to_delete = grid[0].size() * -2
 
 func add_tree_row() -> void:
-	print("add row", start_x, start_y)
 	var instance: TreeCell = tree_cell.instantiate()
 	var rect: Rect2 = instance.get_rect()
 	for i in grid.size():
@@ -82,7 +81,6 @@ func add_tree_cell(i: int, j: int) -> void:
 		cell_l_clicked.emit(cell)
 	)
 	instance.cell_r_clicked.connect(func(cell: TreeCell):
-		print("asdf")
 		cell_r_clicked.emit(cell)
 	)
 	instance.cell_x = i
