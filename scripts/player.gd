@@ -24,18 +24,30 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	move_hand(active_hand_left)
+	move_forg()
+	rotate_hand()
 	pass
+
+func move_forg():
+	# active and incative hand positions
+	var apos = lhand.global_position if active_hand_left else rhand.global_position
+	var ipos = rhand.global_position if active_hand_left else lhand.global_position
+	
+	forg.global_position = Vector2(apos.x*.3 + ipos.x*.7, apos.y*.1 + ipos.y*.9)
 
 func move_hand(hand: bool):
 	if hand:
 		lhand.global_position = calc_hand_pos(rhand.global_position)
 	else:
 		rhand.global_position = calc_hand_pos(lhand.global_position)
-	forg.global_position = lhand.global_position/2 + rhand.global_position/2
 
 func calc_hand_pos(inactive_hand_pos: Vector2):
 	var mouse_pos = get_global_mouse_position()
 	var difference = get_global_mouse_position()-inactive_hand_pos
-	var max = inactive_hand_pos + (difference.normalized()*256)
+	var max = inactive_hand_pos + (difference.normalized()*180)
 	
 	return mouse_pos if inactive_hand_pos.distance_to(max) > inactive_hand_pos.distance_to(mouse_pos) else max
+
+func rotate_hand():
+	lhand.rotation = forg.global_position.angle_to_point(lhand.global_position) + deg_to_rad(90)
+	rhand.rotation = forg.global_position.angle_to_point(rhand.global_position) + deg_to_rad(90)

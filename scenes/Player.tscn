@@ -1,24 +1,34 @@
-[gd_scene load_steps=7 format=3 uid="uid://tak0406ssi1m"]
+[gd_scene load_steps=8 format=3 uid="uid://tak0406ssi1m"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_qp6hn"]
 [ext_resource type="Texture2D" uid="uid://con3f47rmbvgh" path="res://assets/tree_sprite_sheet.png" id="2_rs4gg"]
 [ext_resource type="PackedScene" uid="uid://cogdeqoykfmnr" path="res://scenes/storm.tscn" id="2_xbypt"]
+[ext_resource type="Texture2D" uid="uid://1uerymsqd1xi" path="res://assets/GameJamSpriteSheet.png" id="4_35wrg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18jc0"]
+atlas = ExtResource("4_35wrg")
+region = Rect2(304, 32, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6nkr"]
+atlas = ExtResource("4_35wrg")
+region = Rect2(304, 32, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_46w7h"]
 atlas = ExtResource("2_rs4gg")
 region = Rect2(256, 40, 32, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_18jc0"]
-atlas = ExtResource("2_rs4gg")
-region = Rect2(256, 0, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m6nkr"]
-atlas = ExtResource("2_rs4gg")
-region = Rect2(240, 0, 16, 24)
-
 [node name="Player" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_qp6hn")
+
+[node name="LHand" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_18jc0")
+flip_h = true
+
+[node name="RHand" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_m6nkr")
 
 [node name="Forg" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -30,11 +40,3 @@ position_smoothing_enabled = true
 
 [node name="Storm" parent="Forg/Camera2D" instance=ExtResource("2_xbypt")]
 position = Vector2(-576, -324)
-
-[node name="LHand" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = SubResource("AtlasTexture_18jc0")
-
-[node name="RHand" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = SubResource("AtlasTexture_m6nkr")
