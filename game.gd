@@ -5,6 +5,7 @@ var pause_menu_preload = preload('res://scenes/pause_menu.tscn')
 var game_over_menu_preload = preload('res://scenes/game_over_menu.tscn')
 var day_finished_menu_preload = preload('res://scenes/day_finished_menu.tscn')
 var game_gui_preload = preload('res://scenes/game_gui.tscn')
+var options_menu_preload = preload('res://scenes/options_menu.tscn')
 
 var last_highest_point := 0
 var last_move_time := Time.get_ticks_msec()
@@ -103,7 +104,8 @@ func _on_main_menu_play_pressed() -> void:
 	reset_play(true)
 
 func _on_main_menu_options_pressed() -> void:
-	print("options pressed") # TODO
+	var instance = options_menu_preload.instantiate()
+	$CanvasLayer.add_child(instance)
 
 func _on_main_menu_quit_pressed() -> void:
 	get_tree().quit()
