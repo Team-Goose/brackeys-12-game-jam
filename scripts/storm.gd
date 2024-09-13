@@ -25,40 +25,50 @@ func set_particle_intensity(wind_strength: float) -> void:
 	if wind_strength < 1:
 		%RainParticles.intensity_off()
 		%SwirlingLeafParticles.intensity_off()
+		%WindParticles.intensity_off()
 		storm_strength.emit(0)
 	elif wind_strength >= 1 && wind_strength < 2:
 		%RainParticles.intensity_off()
 		%SwirlingLeafParticles.intensity_low()
+		%WindParticles.intensity_low()
 		storm_strength.emit(1)
 	elif wind_strength >= 2 && wind_strength < 3:
 		%RainParticles.intensity_low()
 		%SwirlingLeafParticles.intensity_low()
+		%WindParticles.intensity_low()
 		storm_strength.emit(2)
 	elif wind_strength >= 3 && wind_strength < 4:
 		%RainParticles.intensity_low()
 		%SwirlingLeafParticles.intensity_mid()
+		%WindParticles.intensity_mid()
 		storm_strength.emit(3)
 	elif wind_strength >= 4 && wind_strength < 5:
 		%RainParticles.intensity_mid()
 		%SwirlingLeafParticles.intensity_mid()
+		%WindParticles.intensity_mid()
 		storm_strength.emit(4)
 	elif wind_strength >= 5 && wind_strength < 6:
 		%RainParticles.intensity_mid()
 		%SwirlingLeafParticles.intensity_high()
+		%WindParticles.intensity_high()
 		storm_strength.emit(5)
 	elif wind_strength >= 6 && wind_strength < 7:
 		%RainParticles.intensity_high()
 		%SwirlingLeafParticles.intensity_high()
+		%WindParticles.intensity_high()
 		storm_strength.emit(6)
 	elif wind_strength >= 7 && wind_strength < 8:
 		%RainParticles.intensity_high()
 		%SwirlingLeafParticles.intensity_super()
+		%WindParticles.intensity_super()
 		storm_strength.emit(7)
 	elif wind_strength >= 8 && wind_strength < 9:
 		%RainParticles.intensity_super()
 		%SwirlingLeafParticles.intensity_super()
+		%WindParticles.intensity_super()
 		storm_strength.emit(8)
 	else:
 		%RainParticles.intensity_typhoon()
 		%SwirlingLeafParticles.intensity_typhoon()
+		%WindParticles.intensity_typhoon()
 		storm_strength.emit(9)

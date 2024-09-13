@@ -1,0 +1,393 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcatgvqeb6yjh"]
+
+[ext_resource type="Script" path="res://scripts/wind_particles.gd" id="1_v6ni2"]
+[ext_resource type="Texture2D" uid="uid://be1rvdcumufkg" path="res://assets/wind.png" id="2_1u3ia"]
+
+[sub_resource type="Curve" id="Curve_jtu0k"]
+_data = [Vector2(0, 0.204369), 0.0, 0.0, 0, 0, Vector2(0.5, 0.6), 0.0, 0.0, 0, 0, Vector2(0.996979, 0.220366), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_45jve"]
+curve = SubResource("Curve_jtu0k")
+
+[sub_resource type="Curve" id="Curve_m7tem"]
+min_value = -1.0
+_data = [Vector2(0.00666666, 0), 0.0, 0.0, 0, 0, Vector2(0.250755, 0.570172), 0.0, 0.0, 0, 0, Vector2(0.5, -0.536405), 0.0, 0.0, 0, 0, Vector2(0.750755, 0.570172), 0.0, 0.0, 0, 0, Vector2(1, -0.00648785), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_5o6ba"]
+_data = [Vector2(0, 0.0131921), 0.0, 0.0, 0, 0, Vector2(1, 0.748505), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_uojwc"]
+curve_x = SubResource("Curve_m7tem")
+curve_y = SubResource("Curve_5o6ba")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hywsx"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(661, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+directional_velocity_min = 20.0
+directional_velocity_max = 50.0
+directional_velocity_curve = SubResource("CurveXYZTexture_uojwc")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.1
+alpha_curve = SubResource("CurveTexture_45jve")
+
+[node name="WindParticles" type="Node2D"]
+script = ExtResource("1_v6ni2")
+
+[node name="WindParticles1" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles2" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles3" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles4" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles5" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles6" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles7" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles8" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles9" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles10" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles11" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles12" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles13" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles14" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles15" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles16" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles17" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles18" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles19" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles20" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles21" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles22" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles23" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles24" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
+
+[node name="WindParticles25" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_hywsx")
+texture = ExtResource("2_1u3ia")
+lifetime = 30.0
+speed_scale = 4.0
+fixed_fps = 60
+interpolate = false
+visibility_rect = Rect2(-100, -100, 200, 600)
+trail_enabled = true
+trail_lifetime = 0.5
+trail_sections = 96
+trail_section_subdivisions = 96
