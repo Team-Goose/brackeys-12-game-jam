@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://tak0406ssi1m"]
+[gd_scene load_steps=11 format=3 uid="uid://tak0406ssi1m"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_qp6hn"]
 [ext_resource type="Texture2D" uid="uid://con3f47rmbvgh" path="res://assets/tree_sprite_sheet.png" id="2_rs4gg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://5c6pg7ersgyo" path="res://assets/right_arm.png" id="3_rd5dt"]
 [ext_resource type="Texture2D" uid="uid://crg8kafmp5mb5" path="res://assets/left_arm.png" id="3_y00o3"]
 [ext_resource type="Texture2D" uid="uid://1uerymsqd1xi" path="res://assets/GameJamSpriteSheet.png" id="4_35wrg"]
+[ext_resource type="AudioStream" uid="uid://c0aa2rxsqupp2" path="res://assets/sfx/FrogGrabSound.wav" id="7_ntm1m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_18jc0"]
 atlas = ExtResource("4_35wrg")
@@ -55,5 +56,8 @@ position_smoothing_enabled = true
 
 [node name="Storm" parent="Forg/Camera2D" instance=ExtResource("2_xbypt")]
 position = Vector2(-576, -324)
+
+[node name="GrabSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ntm1m")
 
 [connection signal="storm_strength" from="Forg/Camera2D/Storm" to="." method="_on_storm_strength_change"]

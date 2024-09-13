@@ -25,27 +25,33 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 stream = ExtResource("3_c0bxx")
 autoplay = true
+bus = &"Music"
 
 [node name="Marimba1" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("4_57xrh")
 autoplay = true
+bus = &"Music"
 
 [node name="Contrabass" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("5_esxe0")
+bus = &"Music"
 
 [node name="Ukulele" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("6_10566")
+bus = &"Music"
 
 [node name="Marimba2" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("7_fg56r")
+bus = &"Music"
 
 [node name="Trumpet" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("8_adna2")
+bus = &"Music"
 
 [node name="DayTimer" type="Timer" parent="."]
 unique_name_in_owner = true

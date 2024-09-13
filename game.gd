@@ -76,8 +76,8 @@ func _on_cell_r_clicked(cell: TreeCell) -> void:
 func add_points(y_value: int, hold_strength: int) -> void:
 	# only climbing to new heights gets points!
 	if y_value > last_highest_point:
-		last_highest_point = y_value
-		# multiplier is 1 + however many minutes have passed + 10% of storm intensity + 20% of hold strength + 10% of day number
+		# multiplier is 1 + however many minutes have passed + 10% of storm intensity
+		#   + 20% of hold strength + 10% of day number + 20% of distance from last height to new height
 		# timer calc:
 		var multiplier: float = ((%DayTimer.wait_time - %DayTimer.time_left) / 60) + 1
 		# storm intensity calc:
@@ -86,7 +86,10 @@ func add_points(y_value: int, hold_strength: int) -> void:
 		multiplier += hold_strength / 5.0
 		# day number calc:
 		multiplier += day / 10.0
+		# height difference calc:
+		multiplier += (y_value - last_highest_point) / 5.0
 		score += y_value * multiplier
+		last_highest_point = y_value
 		$CanvasLayer/GameGUI.set_score(int(score))
 
 func _on_main_menu_play_pressed() -> void:

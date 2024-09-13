@@ -26,6 +26,8 @@ func _input(event: InputEvent) -> void:
 			else:
 				rhand.global_position = result.front().collider.global_position
 			active_hand_left = !active_hand_left
+			$GrabSoundEffect.pitch_scale = (randf() / 2.0) + 0.75
+			$GrabSoundEffect.play()
 
 func _process(delta: float) -> void:
 	move_hand(active_hand_left)
