@@ -1,5 +1,7 @@
 extends Node2D
 
+signal storm_strength_changed(val: int)
+
 @onready var forg := $Forg
 @onready var lhand := $LHand
 @onready var rhand := $RHand
@@ -8,6 +10,7 @@ extends Node2D
 @onready var camera := $Forg/Camera2D
 
 var active_hand_left := true
+var storm_strength := 0
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("l_click"):
@@ -55,3 +58,9 @@ func calc_hand_pos(inactive_hand_pos: Vector2):
 func rotate_hand():
 	lhand.rotation = forg.global_position.angle_to_point(lhand.global_position) + deg_to_rad(90)
 	rhand.rotation = forg.global_position.angle_to_point(rhand.global_position) + deg_to_rad(90)
+
+
+func _on_storm_strength_change(val: int) -> void:
+	if storm_strength != val:
+		storm_strength = val
+		storm_strength_changed.emit(val)

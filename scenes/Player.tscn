@@ -50,7 +50,10 @@ texture = SubResource("AtlasTexture_46w7h")
 
 [node name="Camera2D" type="Camera2D" parent="Forg"]
 scale = Vector2(0.5, 0.5)
+limit_bottom = 648
 position_smoothing_enabled = true
 
 [node name="Storm" parent="Forg/Camera2D" instance=ExtResource("2_xbypt")]
 position = Vector2(-576, -324)
+
+[connection signal="storm_strength" from="Forg/Camera2D/Storm" to="." method="_on_storm_strength_change"]
