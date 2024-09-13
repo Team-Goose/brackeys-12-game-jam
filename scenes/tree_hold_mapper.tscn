@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://tak0406ssi1m" path="res://scenes/Player.tscn" id="2_qo1ug"]
 
 [node name="TreeHoldMapper" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_h3l8u")
 
 [node name="Player" parent="." instance=ExtResource("2_qo1ug")]

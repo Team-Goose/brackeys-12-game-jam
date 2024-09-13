@@ -10,9 +10,11 @@
 [ext_resource type="AudioStream" uid="uid://dlm6gkxpk8vnk" path="res://assets/music/Trumpet.wav" id="8_adna2"]
 
 [node name="Game" type="Node"]
+process_mode = 3
 script = ExtResource("1_vwq8j")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("4_ogkj4")]
 unique_name_in_owner = true
@@ -45,7 +47,14 @@ stream = ExtResource("7_fg56r")
 unique_name_in_owner = true
 stream = ExtResource("8_adna2")
 
+[node name="DayTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+process_mode = 1
+wait_time = 120.0
+one_shot = true
+
 [connection signal="options_pressed" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_options_pressed"]
 [connection signal="play_pressed" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_play_pressed"]
 [connection signal="quit_pressed" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_quit_pressed"]
 [connection signal="finished" from="Music/Tambourine" to="." method="_on_tambourine_finished"]
+[connection signal="timeout" from="DayTimer" to="." method="_on_day_finished"]

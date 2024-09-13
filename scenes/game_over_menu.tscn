@@ -11,6 +11,7 @@ font = SubResource("SystemFont_40rcn")
 font_size = 64
 
 [node name="GameOverMenu" type="Control"]
+process_mode = 3
 z_index = 1000
 z_as_relative = false
 layout_mode = 3

@@ -4,9 +4,17 @@ var tree_hold_mapper_preload = preload('res://scenes/tree_hold_mapper.tscn')
 var pause_menu_preload = preload('res://scenes/pause_menu.tscn')
 var game_over_menu_preload = preload('res://scenes/game_over_menu.tscn')
 var day_finished_menu_preload = preload('res://scenes/day_finished_menu.tscn')
+var game_gui_preload = preload('res://scenes/game_gui.tscn')
 
+var last_highest_point := 0
 var score := 0
 var storm_strength := 0
+
+func _process(delta: float) -> void:
+	var game_gui: GameGUI = $CanvasLayer/GameGUI
+	if game_gui != null:
+		var proportion_time_passed: float = (%DayTimer.wait_time - %DayTimer.time_left) / %DayTimer.wait_time
+		game_gui.set_color(proportion_time_passed)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed('esc') && !%MainMenu.visible:
@@ -40,6 +48,7 @@ func return_to_title() -> void:
 	hide_pause_menu()
 	$CanvasLayer.remove_child($CanvasLayer/GameOverMenu)
 	$CanvasLayer.remove_child($CanvasLayer/DayFinishedMenu)
+	$CanvasLayer.remove_child($CanvasLayer/GameGUI)
 	%MainMenu.visible = true
 	remove_child($TreeHoldMapper)
 
@@ -47,19 +56,35 @@ func hide_pause_menu() -> void:
 	get_tree().paused = false
 	$CanvasLayer.remove_child($CanvasLayer/PauseMenu)
 
-func _on_cell_l_clicked(cell: TreeCell):
+func _on_cell_l_clicked(cell: TreeCell) -> void:
 	## TODO - propagate left click back down to player with proper functionality
 	var tree_hold_mapper: TreeHoldMapper = $TreeHoldMapper
 	var range = cell.cell_y - tree_hold_mapper.bottom_cell
 	for row in range:
 		tree_hold_mapper.add_tree_row()
+	add_points(cell.cell_y, cell.hold_strength)
 
-func _on_cell_r_clicked(cell: TreeCell):
+func _on_cell_r_clicked(cell: TreeCell) -> void:
 	# TODO - propagate right click back down to player with proper functionality
 	var tree_hold_mapper: TreeHoldMapper = $TreeHoldMapper
 	var range = cell.cell_y - tree_hold_mapper.bottom_cell
 	for row in range:
 		tree_hold_mapper.add_tree_row()
+	add_points(cell.cell_y, cell.hold_strength)
+
+func add_points(y_value: int, hold_strength: int) -> void:
+	# only climbing to new heights gets points!
+	if y_value > last_highest_point:
+		last_highest_point = y_value
+		# multiplier is 1 + however many minutes have passed + 10% of storm intensity + 10% of hold strength
+		# timer calc:
+		var multiplier: float = ((%DayTimer.wait_time - %DayTimer.time_left) / 60) + 1
+		# storm intensity calc:
+		multiplier += storm_strength / 10.0
+		# hold strength calc:
+		multiplier += hold_strength / 10.0
+		score += y_value * multiplier
+		$CanvasLayer/GameGUI.set_score(int(score))
 
 func _on_main_menu_play_pressed() -> void:
 	reset_play()
@@ -70,23 +95,31 @@ func _on_main_menu_options_pressed() -> void:
 func _on_main_menu_quit_pressed() -> void:
 	get_tree().quit()
 
-func reset_play() -> void:
+func reset_play(reset_score: bool = false) -> void:
 	get_tree().paused = false
+	last_highest_point = 0
 	var curr_game = $TreeHoldMapper
 	if curr_game != null:
 		remove_child($TreeHoldMapper)
+		$CanvasLayer.remove_child($CanvasLayer/GameGUI)
 	var game_over = $CanvasLayer/GameOverMenu
 	if game_over != null:
 		$CanvasLayer.remove_child(game_over)
 	var day_finished = $CanvasLayer/DayFinishedMenu
 	if day_finished != null:
 		$CanvasLayer.remove_child(day_finished)
+	if reset_score:
+		score = 0
 	%MainMenu.visible = false
-	var instance: TreeHoldMapper = tree_hold_mapper_preload.instantiate()
-	instance.connect('cell_l_clicked', _on_cell_l_clicked)
-	instance.connect('cell_r_clicked', _on_cell_r_clicked)
-	instance.get_node('Player').connect('storm_strength_changed', _on_storm_strength_changed)
-	add_child(instance)
+	var thm_instance: TreeHoldMapper = tree_hold_mapper_preload.instantiate()
+	thm_instance.connect('cell_l_clicked', _on_cell_l_clicked)
+	thm_instance.connect('cell_r_clicked', _on_cell_r_clicked)
+	thm_instance.get_node('Player').connect('storm_strength_changed', _on_storm_strength_changed)
+	add_child(thm_instance)
+	var gui_instance: GameGUI = game_gui_preload.instantiate()
+	$CanvasLayer.add_child(gui_instance)
+	$CanvasLayer/GameGUI.set_score(int(score))
+	%DayTimer.start()
 
 func _on_storm_strength_changed(val: int) -> void:
 	storm_strength = val

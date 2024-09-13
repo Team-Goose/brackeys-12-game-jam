@@ -24,7 +24,7 @@ const SIDE_FLOWER_CHANCE := 0.1
 # effectively a const but const doesn't get along with PackedFloat32Array for some reason
 var normal_atlas_region_weights := PackedFloat32Array([1.0, 0.1, 0.1, 0.1])
 
-var hold_strength := 0.0
+var hold_strength := 0
 var cell_x := 0
 var cell_y := 0
 
