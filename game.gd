@@ -3,6 +3,9 @@ extends Node
 var tree_hold_mapper_preload = preload("res://scenes/tree_hold_mapper.tscn")
 var pause_menu_preload = preload("res://scenes/pause_menu.tscn")
 var game_over_menu_preload = preload("res://scenes/game_over_menu.tscn")
+var day_finished_menu_preload = preload("res://scenes/day_finished_menu.tscn")
+
+var score := 0
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc") && !%MainMenu.visible:
@@ -10,6 +13,13 @@ func _input(event: InputEvent) -> void:
 			hide_pause_menu()
 		else:
 			show_pause_menu()
+
+func _on_day_finished() -> void:
+	var instance: DayFinishedMenu = day_finished_menu_preload.instantiate()
+	instance.connect("continue_pressed", reset_play)
+	instance.connect("return_to_title_pressed", return_to_title)
+	$CanvasLayer.add_child(instance)
+	get_tree().paused = true
 
 func _on_game_over() -> void:
 	var instance: GameOverMenu = game_over_menu_preload.instantiate()
@@ -28,6 +38,7 @@ func show_pause_menu() -> void:
 func return_to_title() -> void:
 	hide_pause_menu()
 	$CanvasLayer.remove_child($CanvasLayer/GameOverMenu)
+	$CanvasLayer.remove_child($CanvasLayer/DayFinishedMenu)
 	%MainMenu.visible = true
 	remove_child($TreeHoldMapper)
 
@@ -66,6 +77,9 @@ func reset_play() -> void:
 	var game_over = $CanvasLayer/GameOverMenu
 	if game_over != null:
 		$CanvasLayer.remove_child(game_over)
+	var day_finished = $CanvasLayer/DayFinishedMenu
+	if day_finished != null:
+		$CanvasLayer.remove_child(day_finished)
 	%MainMenu.visible = false
 	var instance: TreeHoldMapper = tree_hold_mapper_preload.instantiate()
 	instance.connect("cell_l_clicked", _on_cell_l_clicked)

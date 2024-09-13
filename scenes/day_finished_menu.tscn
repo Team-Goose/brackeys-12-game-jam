@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3wvvr743kcst"]
+[gd_scene load_steps=5 format=3 uid="uid://bfedb87fwodtx"]
 
-[ext_resource type="Theme" uid="uid://cr5mj0hosrwmu" path="res://assets/main_menu_theme.tres" id="1_uwhme"]
-[ext_resource type="Script" path="res://scripts/game_over_menu.gd" id="2_gxsm3"]
+[ext_resource type="Theme" uid="uid://cr5mj0hosrwmu" path="res://assets/main_menu_theme.tres" id="1_es0vf"]
+[ext_resource type="Script" path="res://scripts/day_finished_menu.gd" id="2_rc1yk"]
 
 [sub_resource type="SystemFont" id="SystemFont_40rcn"]
 subpixel_positioning = 0
@@ -10,7 +10,7 @@ subpixel_positioning = 0
 font = SubResource("SystemFont_40rcn")
 font_size = 64
 
-[node name="GameOverMenu" type="Control"]
+[node name="DayFinishedMenu" type="Control"]
 z_index = 1000
 z_as_relative = false
 layout_mode = 3
@@ -21,8 +21,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_uwhme")
-script = ExtResource("2_gxsm3")
+theme = ExtResource("1_es0vf")
+script = ExtResource("2_rc1yk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -31,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.65098, 0.247059, 0.286275, 0.411765)
+color = Color(0.379537, 0.435647, 1.92523e-07, 0.411765)
 
 [node name="MarginContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -54,9 +54,9 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 
-[node name="GameOverLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="DayFinishedLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "GAME OVER"
+text = "DAY FINISHED!"
 label_settings = SubResource("LabelSettings_niw8j")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -65,10 +65,10 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="TryAgainButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-text = "Try Again!"
+text = "Continue!"
 
 [node name="BoxContainer3" type="BoxContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
@@ -93,6 +93,6 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/TryAgainButton" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnToTitleButton" to="." method="_on_return_to_title_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitToDesktopButton" to="." method="_on_quit_to_desktop_pressed"]

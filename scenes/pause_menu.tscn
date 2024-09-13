@@ -67,6 +67,7 @@ layout_mode = 2
 
 [node name="UnpauseButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Unpause!"
 
 [node name="BoxContainer3" type="BoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -75,6 +76,7 @@ layout_mode = 2
 
 [node name="ReturnToTitleButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Return to Title..."
 
 [node name="BoxContainer4" type="BoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -83,6 +85,7 @@ layout_mode = 2
 
 [node name="QuitToDesktopButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Quit to Desktop :("
 
 [node name="BoxContainer2" type="BoxContainer" parent="MarginContainer"]
