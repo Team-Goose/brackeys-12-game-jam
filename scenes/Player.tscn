@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://tak0406ssi1m"]
+[gd_scene load_steps=10 format=3 uid="uid://tak0406ssi1m"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_qp6hn"]
 [ext_resource type="Texture2D" uid="uid://con3f47rmbvgh" path="res://assets/tree_sprite_sheet.png" id="2_rs4gg"]
 [ext_resource type="PackedScene" uid="uid://cogdeqoykfmnr" path="res://scenes/storm.tscn" id="2_xbypt"]
+[ext_resource type="Texture2D" uid="uid://5c6pg7ersgyo" path="res://assets/right_arm.png" id="3_rd5dt"]
+[ext_resource type="Texture2D" uid="uid://crg8kafmp5mb5" path="res://assets/left_arm.png" id="3_y00o3"]
 [ext_resource type="Texture2D" uid="uid://1uerymsqd1xi" path="res://assets/GameJamSpriteSheet.png" id="4_35wrg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_18jc0"]
@@ -29,6 +31,18 @@ flip_h = true
 [node name="RHand" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_m6nkr")
+
+[node name="LHandLine" type="Line2D" parent="."]
+width = 8.0
+texture = ExtResource("3_y00o3")
+texture_mode = 1
+
+[node name="RHandLine" type="Line2D" parent="."]
+position = Vector2(1, 0)
+closed = true
+width = 8.0
+texture = ExtResource("3_rd5dt")
+texture_mode = 1
 
 [node name="Forg" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

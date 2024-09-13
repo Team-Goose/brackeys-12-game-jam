@@ -1,9 +1,11 @@
 extends Node2D
 
-@onready var forg = $Forg
-@onready var lhand = $LHand
-@onready var rhand = $RHand
-@onready var camera = $Forg/Camera2D
+@onready var forg := $Forg
+@onready var lhand := $LHand
+@onready var rhand := $RHand
+@onready var lhand_line := $LHandLine
+@onready var rhand_line := $RHandLine
+@onready var camera := $Forg/Camera2D
 
 var active_hand_left := true
 
@@ -40,6 +42,8 @@ func move_hand(hand: bool):
 		lhand.global_position = calc_hand_pos(rhand.global_position)
 	else:
 		rhand.global_position = calc_hand_pos(lhand.global_position)
+	lhand_line.points = [lhand.position, forg.position]
+	rhand_line.points = [rhand.position, forg.position]
 
 func calc_hand_pos(inactive_hand_pos: Vector2):
 	var mouse_pos = get_global_mouse_position()
