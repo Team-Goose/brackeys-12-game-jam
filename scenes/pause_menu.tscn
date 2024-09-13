@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://6flb8j1cfct4"]
+
+[ext_resource type="Theme" uid="uid://cr5mj0hosrwmu" path="res://assets/main_menu_theme.tres" id="1_mn6jb"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="2_n2oor"]
+
+[sub_resource type="SystemFont" id="SystemFont_40rcn"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_niw8j"]
+font = SubResource("SystemFont_40rcn")
+font_size = 64
+
+[node name="PauseMenu" type="Control"]
+z_index = 1000
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_mn6jb")
+script = ExtResource("2_n2oor")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.305882, 0.247059, 0.411765)
+
+[node name="MarginContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="PauseLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_niw8j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxContainer2" type="BoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="UnpauseButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Unpause!"
+
+[node name="BoxContainer3" type="BoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="ReturnToTitleButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Return to Title..."
+
+[node name="BoxContainer4" type="BoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="QuitToDesktopButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit to Desktop :("
+
+[node name="BoxContainer2" type="BoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/UnpauseButton" to="." method="_on_unpause_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnToTitleButton" to="." method="_on_return_to_title_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitToDesktopButton" to="." method="_on_quit_to_desktop_pressed"]
