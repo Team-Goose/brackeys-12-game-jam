@@ -7,6 +7,7 @@ var day_finished_menu_preload = preload('res://scenes/day_finished_menu.tscn')
 var game_gui_preload = preload('res://scenes/game_gui.tscn')
 
 var last_highest_point := 0
+var last_move_time := Time.get_ticks_msec()
 var day := 0
 var score := 0
 var storm_strength := 0
@@ -78,6 +79,7 @@ func add_points(y_value: int, hold_strength: int) -> void:
 	if y_value > last_highest_point:
 		# multiplier is 1 + however many minutes have passed + 10% of storm intensity
 		#   + 20% of hold strength + 10% of day number + 20% of distance from last height to new height
+		#   ...all multiplied by 0.1 if you waited less than 300ms between moves to discourage spamming
 		# timer calc:
 		var multiplier: float = ((%DayTimer.wait_time - %DayTimer.time_left) / 60) + 1
 		# storm intensity calc:
@@ -88,8 +90,13 @@ func add_points(y_value: int, hold_strength: int) -> void:
 		multiplier += day / 10.0
 		# height difference calc:
 		multiplier += (y_value - last_highest_point) / 5.0
+		# wait time calc:
+		var now = Time.get_ticks_msec()
+		if now - last_move_time <= 300:
+			multiplier *= 0.1
 		score += y_value * multiplier
 		last_highest_point = y_value
+		last_move_time = now
 		$CanvasLayer/GameGUI.set_score(int(score))
 
 func _on_main_menu_play_pressed() -> void:
