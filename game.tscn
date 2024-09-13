@@ -6,13 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://dq2mf370b64nx" path="res://scenes/main_menu.tscn" id="4_ogkj4"]
 [ext_resource type="AudioStream" uid="uid://cmwbl6p4ouwag" path="res://assets/music/Contrabass.wav" id="5_esxe0"]
 [ext_resource type="AudioStream" uid="uid://c805ou6umng8n" path="res://assets/music/Ukulele.wav" id="6_10566"]
-[ext_resource type="AudioStream" uid="uid://g7n7qb334gkd" path="res://assets/music/Marimba2.wav" id="7_fg56r"]
+[ext_resource type="AudioStream" uid="uid://d2fhip85w6luj" path="res://assets/music/Marimba2.wav" id="7_fg56r"]
 [ext_resource type="AudioStream" uid="uid://dlm6gkxpk8vnk" path="res://assets/music/Trumpet.wav" id="8_adna2"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_vwq8j")
 
-[node name="MainMenu" parent="." instance=ExtResource("4_ogkj4")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("4_ogkj4")]
 unique_name_in_owner = true
 
 [node name="Music" type="Node" parent="."]

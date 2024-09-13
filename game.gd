@@ -56,18 +56,13 @@ func _on_cell_l_clicked(cell: TreeCell):
 
 func _on_cell_r_clicked(cell: TreeCell):
 	# TODO - propagate right click back down to player with proper functionality
-	print("zxcv")
 	var tree_hold_mapper: TreeHoldMapper = $TreeHoldMapper
 	var range = cell.cell_y - tree_hold_mapper.bottom_cell
 	for row in range:
 		tree_hold_mapper.add_tree_row()
 
 func _on_main_menu_play_pressed() -> void:
-	%MainMenu.visible = false
-	var instance: TreeHoldMapper = tree_hold_mapper_preload.instantiate()
-	instance.connect("cell_l_clicked", _on_cell_l_clicked)
-	instance.connect("cell_r_clicked", _on_cell_r_clicked)
-	add_child(instance)
+	reset_play()
 
 func _on_main_menu_options_pressed() -> void:
 	print("options pressed") # TODO
