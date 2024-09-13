@@ -1,5 +1,7 @@
 extends Node
 
+const GAME_SAVE_LOCATION := 'user://game.save'
+
 var tree_hold_mapper_preload = preload('res://scenes/tree_hold_mapper.tscn')
 var pause_menu_preload = preload('res://scenes/pause_menu.tscn')
 var game_over_menu_preload = preload('res://scenes/game_over_menu.tscn')
@@ -7,11 +9,82 @@ var day_finished_menu_preload = preload('res://scenes/day_finished_menu.tscn')
 var game_gui_preload = preload('res://scenes/game_gui.tscn')
 var options_menu_preload = preload('res://scenes/options_menu.tscn')
 
+var master_bus_index := AudioServer.get_bus_index("Master")
+var music_bus_index := AudioServer.get_bus_index("Music")
+var sfx_bus_index := AudioServer.get_bus_index("SFX")
+
 var last_highest_point := 0
 var last_move_time := Time.get_ticks_msec()
-var day := 0
+var day := 1
 var score := 0
 var storm_strength := 0
+var username := ''
+
+func _ready() -> void:
+	# uncomment for debug save overwriting:
+	#save_game({
+		#'day': 1,
+		#'score': 0
+	#})
+	load_game()
+
+func check_save_game() -> void:
+	if not FileAccess.file_exists(GAME_SAVE_LOCATION):
+		print('SAVE DOES NOT EXIST')
+		var new_file := FileAccess.open(GAME_SAVE_LOCATION, FileAccess.WRITE)
+		new_file.store_line(JSON.stringify({
+			'master_volume': db_to_linear(AudioServer.get_bus_volume_db(master_bus_index)),
+			'music_volume': db_to_linear(AudioServer.get_bus_volume_db(music_bus_index)),
+			'sfx_volume': db_to_linear(AudioServer.get_bus_volume_db(sfx_bus_index)),
+			'fullscreen': false,
+			'day': day,
+			'score': score,
+			'username': '',
+		}))
+
+func load_game() -> void:
+	check_save_game()
+	var file := FileAccess.open(GAME_SAVE_LOCATION, FileAccess.READ)
+	var json_str := file.get_line()
+	var json := JSON.new()
+	var parsed := json.parse(json_str)
+	if not parsed == OK:
+		print("Could not load saved game")
+		return
+	var data = json.get_data()
+	AudioServer.set_bus_volume_db(
+		master_bus_index,
+		linear_to_db(data['master_volume'])
+	)
+	AudioServer.set_bus_volume_db(
+		music_bus_index,
+		linear_to_db(data['music_volume'])
+	)
+	AudioServer.set_bus_volume_db(
+		sfx_bus_index,
+		linear_to_db(data['sfx_volume'])
+	)
+	DisplayServer.window_set_mode(
+		DisplayServer.WINDOW_MODE_FULLSCREEN if data['fullscreen'] else DisplayServer.WINDOW_MODE_WINDOWED
+	)
+	day = data['day']
+	score = data['score']
+	username = data['username']
+
+func save_game(state_change: Variant) -> void:
+	check_save_game()
+	var read_file := FileAccess.open(GAME_SAVE_LOCATION, FileAccess.READ)
+	var json_str := read_file.get_line()
+	var json := JSON.new()
+	var parsed := json.parse(json_str)
+	if not parsed == OK:
+		print("Could not load saved game")
+		return
+	var data = json.get_data()
+	for key in state_change:
+		data[key] = state_change[key]
+	var write_file := FileAccess.open(GAME_SAVE_LOCATION, FileAccess.WRITE)
+	write_file.store_line(JSON.stringify(data))
 
 func _process(delta: float) -> void:
 	var game_gui: GameGUI = $CanvasLayer/GameGUI
@@ -30,6 +103,7 @@ func _on_day_finished() -> void:
 	var instance: DayFinishedMenu = day_finished_menu_preload.instantiate()
 	instance.connect('continue_pressed', reset_play)
 	instance.connect('return_to_title_pressed', return_to_title)
+	instance.connect('quit_pressed', quit)
 	$CanvasLayer.add_child(instance)
 	get_tree().paused = true
 
@@ -47,13 +121,28 @@ func show_pause_menu() -> void:
 	$CanvasLayer.add_child(instance)
 	get_tree().paused = true
 
-func return_to_title() -> void:
+func return_to_title(save: bool = false) -> void:
+	if save:
+		day += 1
+		save_game({
+			'day': day,
+			'score': score,
+		})
 	hide_pause_menu()
 	$CanvasLayer.remove_child($CanvasLayer/GameOverMenu)
 	$CanvasLayer.remove_child($CanvasLayer/DayFinishedMenu)
 	$CanvasLayer.remove_child($CanvasLayer/GameGUI)
 	%MainMenu.visible = true
 	remove_child($TreeHoldMapper)
+
+func quit(save: bool = false) -> void:
+	if save:
+		day += 1
+		save_game({
+			'day': day,
+			'score': score,
+		})
+	get_tree().quit()
 
 func hide_pause_menu() -> void:
 	get_tree().paused = false
@@ -88,7 +177,7 @@ func add_points(y_value: int, hold_strength: int) -> void:
 		# hold strength calc:
 		multiplier += hold_strength / 5.0
 		# day number calc:
-		multiplier += day / 10.0
+		multiplier += (day - 1) / 10.0
 		# height difference calc:
 		multiplier += (y_value - last_highest_point) / 5.0
 		# wait time calc:
@@ -101,16 +190,17 @@ func add_points(y_value: int, hold_strength: int) -> void:
 		$CanvasLayer/GameGUI.set_score(int(score))
 
 func _on_main_menu_play_pressed() -> void:
-	reset_play(true)
+	reset_play()
 
 func _on_main_menu_options_pressed() -> void:
 	var instance = options_menu_preload.instantiate()
+	instance.connect('save_options', save_game)
 	$CanvasLayer.add_child(instance)
 
 func _on_main_menu_quit_pressed() -> void:
 	get_tree().quit()
 
-func reset_play(reset_score: bool = false) -> void:
+func reset_play(reset_score: bool = false, increase_day: bool = false) -> void:
 	get_tree().paused = false
 	last_highest_point = 0
 	var curr_game = $TreeHoldMapper
@@ -133,11 +223,11 @@ func reset_play(reset_score: bool = false) -> void:
 	$CanvasLayer.add_child(gui_instance)
 	if reset_score:
 		score = 0
-		day = 0
-	else:
+		day = 1
+	elif increase_day:
 		day += 1
 	$CanvasLayer/GameGUI.set_score(int(score))
-	$CanvasLayer/GameGUI.set_day(day + 1)
+	$CanvasLayer/GameGUI.set_day(day)
 	%DayTimer.start()
 
 func _on_storm_strength_changed(val: int) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfqrjal7jn48p"]
+[gd_scene load_steps=9 format=3 uid="uid://cfqrjal7jn48p"]
 
 [ext_resource type="Theme" uid="uid://cr5mj0hosrwmu" path="res://assets/main_menu_theme.tres" id="1_rrd33"]
 [ext_resource type="Script" path="res://scripts/options_menu.gd" id="2_0j5ti"]
@@ -9,6 +9,12 @@ subpixel_positioning = 0
 [sub_resource type="LabelSettings" id="LabelSettings_niw8j"]
 font = SubResource("SystemFont_40rcn")
 font_size = 64
+
+[sub_resource type="SystemFont" id="SystemFont_y7ndl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_huyrb"]
+font = SubResource("SystemFont_y7ndl")
+font_size = 24
 
 [sub_resource type="SystemFont" id="SystemFont_if2po"]
 
@@ -58,7 +64,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="BoxContainer" type="BoxContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
 [node name="OptionsLabel" type="Label" parent="MarginContainer/VBoxContainer"]
@@ -70,6 +76,35 @@ vertical_alignment = 1
 
 [node name="BoxContainer2" type="BoxContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="FullscreenContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/VBoxContainer/FullscreenContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FullscreenLabel" type="Label" parent="MarginContainer/VBoxContainer/FullscreenContainer"]
+layout_mode = 2
+text = "Fullscreen"
+label_settings = SubResource("LabelSettings_huyrb")
+horizontal_alignment = 2
+
+[node name="BoxContainer2" type="BoxContainer" parent="MarginContainer/VBoxContainer/FullscreenContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="FullscreenCheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/FullscreenContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BoxContainer3" type="BoxContainer" parent="MarginContainer/VBoxContainer/FullscreenContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer6" type="BoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
 [node name="MasterVolumeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -139,6 +174,7 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
+[connection signal="toggled" from="MarginContainer/VBoxContainer/FullscreenContainer/FullscreenCheckButton" to="." method="_on_fullscreen_toggled"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/MasterVolumeContainer/MasterVolumeSlider" to="." method="_on_master_volume_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/MusicVolumeContainer/MusicVolumeSlider" to="." method="_on_music_volume_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/SfxVolumeContainer/SfxVolumeSlider" to="." method="_on_sfx_volume_changed"]
