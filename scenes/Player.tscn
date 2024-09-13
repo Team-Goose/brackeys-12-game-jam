@@ -9,11 +9,11 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_18jc0"]
 atlas = ExtResource("4_35wrg")
-region = Rect2(304, 32, 16, 24)
+region = Rect2(304, 32, 16, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m6nkr"]
 atlas = ExtResource("4_35wrg")
-region = Rect2(304, 32, 16, 24)
+region = Rect2(304, 32, 16, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_46w7h"]
 atlas = ExtResource("2_rs4gg")
@@ -22,15 +22,6 @@ region = Rect2(256, 40, 32, 16)
 [node name="Player" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_qp6hn")
-
-[node name="LHand" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = SubResource("AtlasTexture_18jc0")
-flip_h = true
-
-[node name="RHand" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = SubResource("AtlasTexture_m6nkr")
 
 [node name="LHandLine" type="Line2D" parent="."]
 width = 8.0
@@ -43,6 +34,15 @@ closed = true
 width = 8.0
 texture = ExtResource("3_rd5dt")
 texture_mode = 1
+
+[node name="LHand" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_18jc0")
+flip_h = true
+
+[node name="RHand" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_m6nkr")
 
 [node name="Forg" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

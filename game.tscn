@@ -10,12 +10,9 @@
 [ext_resource type="AudioStream" uid="uid://dlm6gkxpk8vnk" path="res://assets/music/Trumpet.wav" id="8_adna2"]
 
 [node name="Game" type="Node"]
-process_mode = 3
 script = ExtResource("1_vwq8j")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("4_ogkj4")]
+[node name="MainMenu" parent="." instance=ExtResource("4_ogkj4")]
 unique_name_in_owner = true
 
 [node name="Music" type="Node" parent="."]
