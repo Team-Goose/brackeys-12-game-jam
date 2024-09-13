@@ -59,8 +59,19 @@ mouse_filter = 2
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 
-[node name="TimeLabel" type="Label" parent="MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "120 seconds left today!"
 label_settings = SubResource("LabelSettings_nqs6t")
+horizontal_alignment = 2
+
+[node name="DayLabel" type="Label" parent="MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Day 1"
+label_settings = SubResource("LabelSettings_nqs6t")
+horizontal_alignment = 2

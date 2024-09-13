@@ -7,6 +7,7 @@ var day_finished_menu_preload = preload('res://scenes/day_finished_menu.tscn')
 var game_gui_preload = preload('res://scenes/game_gui.tscn')
 
 var last_highest_point := 0
+var day := 0
 var score := 0
 var storm_strength := 0
 
@@ -76,18 +77,20 @@ func add_points(y_value: int, hold_strength: int) -> void:
 	# only climbing to new heights gets points!
 	if y_value > last_highest_point:
 		last_highest_point = y_value
-		# multiplier is 1 + however many minutes have passed + 10% of storm intensity + 10% of hold strength
+		# multiplier is 1 + however many minutes have passed + 10% of storm intensity + 20% of hold strength + 10% of day number
 		# timer calc:
 		var multiplier: float = ((%DayTimer.wait_time - %DayTimer.time_left) / 60) + 1
 		# storm intensity calc:
 		multiplier += storm_strength / 10.0
 		# hold strength calc:
-		multiplier += hold_strength / 10.0
+		multiplier += hold_strength / 5.0
+		# day number calc:
+		multiplier += day / 10.0
 		score += y_value * multiplier
 		$CanvasLayer/GameGUI.set_score(int(score))
 
 func _on_main_menu_play_pressed() -> void:
-	reset_play()
+	reset_play(true)
 
 func _on_main_menu_options_pressed() -> void:
 	print("options pressed") # TODO
@@ -108,8 +111,6 @@ func reset_play(reset_score: bool = false) -> void:
 	var day_finished = $CanvasLayer/DayFinishedMenu
 	if day_finished != null:
 		$CanvasLayer.remove_child(day_finished)
-	if reset_score:
-		score = 0
 	%MainMenu.visible = false
 	var thm_instance: TreeHoldMapper = tree_hold_mapper_preload.instantiate()
 	thm_instance.connect('cell_l_clicked', _on_cell_l_clicked)
@@ -118,7 +119,13 @@ func reset_play(reset_score: bool = false) -> void:
 	add_child(thm_instance)
 	var gui_instance: GameGUI = game_gui_preload.instantiate()
 	$CanvasLayer.add_child(gui_instance)
+	if reset_score:
+		score = 0
+		day = 0
+	else:
+		day += 1
 	$CanvasLayer/GameGUI.set_score(int(score))
+	$CanvasLayer/GameGUI.set_day(day + 1)
 	%DayTimer.start()
 
 func _on_storm_strength_changed(val: int) -> void:

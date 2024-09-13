@@ -17,3 +17,6 @@ func set_score(score: int = 0) -> void:
 
 func set_color(proportion_time_passed: float) -> void:
 	%TimeFilter.color = DAY_START_COLOR.lerp(DAY_END_COLOR, proportion_time_passed)
+
+func set_day(day: int) -> void:
+	%DayLabel.text = 'Day ' + str(day)
