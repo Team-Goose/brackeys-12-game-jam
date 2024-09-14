@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://tak0406ssi1m"]
+[gd_scene load_steps=15 format=3 uid="uid://tak0406ssi1m"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_qp6hn"]
 [ext_resource type="Texture2D" uid="uid://con3f47rmbvgh" path="res://assets/tree_sprite_sheet.png" id="2_rs4gg"]
@@ -19,6 +19,35 @@ region = Rect2(304, 32, 16, 10)
 [sub_resource type="AtlasTexture" id="AtlasTexture_46w7h"]
 atlas = ExtResource("2_rs4gg")
 region = Rect2(256, 40, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54vkk"]
+atlas = ExtResource("4_35wrg")
+region = Rect2(544, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppcph"]
+atlas = ExtResource("4_35wrg")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl61m"]
+atlas = ExtResource("4_35wrg")
+region = Rect2(512, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_87fln"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54vkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppcph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl61m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="Player" type="Node2D"]
 texture_filter = 1
@@ -56,6 +85,42 @@ position_smoothing_enabled = true
 
 [node name="Storm" parent="Forg/Camera2D" instance=ExtResource("2_xbypt")]
 position = Vector2(-576, -324)
+
+[node name="Sweat" type="AnimatedSprite2D" parent="Forg"]
+visible = false
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_87fln")
+frame_progress = 0.477972
+
+[node name="Control" type="Control" parent="Forg"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = 56.0
+
+[node name="StaminaR" type="ColorRect" parent="Forg/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 6.0
+grow_horizontal = 2
+color = Color(1, 0.172549, 0.356863, 1)
+
+[node name="StaminaL" type="ColorRect" parent="Forg/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 6.0
+grow_horizontal = 2
+scale = Vector2(-1, 1)
+color = Color(1, 0.172549, 0.356863, 1)
 
 [node name="GrabSoundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ntm1m")
