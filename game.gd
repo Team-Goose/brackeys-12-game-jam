@@ -87,10 +87,10 @@ func save_game(state_change: Variant) -> void:
 	write_file.store_line(JSON.stringify(data))
 
 func _process(delta: float) -> void:
-	var game_gui: GameGUI = $CanvasLayer/GameGUI
-	if game_gui != null:
+	var gui: GameGUI = get_node_or_null(^"CanvasLayer/GameGUI")
+	if gui:
 		var proportion_time_passed: float = (%DayTimer.wait_time - %DayTimer.time_left) / %DayTimer.wait_time
-		game_gui.set_color(proportion_time_passed)
+		gui.set_color(proportion_time_passed)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed('esc') && !%MainMenu.visible:
@@ -113,6 +113,7 @@ func _on_game_over() -> void:
 	instance.connect('return_to_title_pressed', return_to_title)
 	$CanvasLayer.add_child(instance)
 	get_tree().paused = true
+	
 
 func show_pause_menu() -> void:
 	var instance: PauseMenu = pause_menu_preload.instantiate()

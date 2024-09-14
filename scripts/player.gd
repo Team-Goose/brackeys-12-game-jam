@@ -8,6 +8,7 @@ signal storm_strength_changed(val: int)
 @onready var lhand_line := $LHandLine
 @onready var rhand_line := $RHandLine
 @onready var camera := $Forg/Camera2D
+@onready var grab_sound := $GrabSoundEffect
 
 var active_hand_left := true
 var storm_strength := 0
@@ -19,20 +20,23 @@ func _input(event: InputEvent) -> void:
 		params.position = lhand.global_position if active_hand_left else rhand.global_position
 		params.collide_with_areas = true
 		
-		var result = get_world_2d().direct_space_state.intersect_point(params, 1)
+		var result := get_world_2d().direct_space_state.intersect_point(params, 1)
 		if result.size() == 1:
-			if active_hand_left:
-				lhand.global_position = result.front().collider.global_position
-			else:
-				rhand.global_position = result.front().collider.global_position
-			active_hand_left = !active_hand_left
-			$GrabSoundEffect.pitch_scale = (randf() / 2.0) + 0.75
-			$GrabSoundEffect.play()
+			var tree_cell: TreeCell = result.front().collider.get_parent()
+			if tree_cell.hold_strength >= storm_strength:
+				if active_hand_left:
+					lhand.global_position = tree_cell.global_position
+				else:
+					rhand.global_position = tree_cell.global_position
+				active_hand_left = !active_hand_left
+				grab_sound.pitch_scale = (randf() / 2.0) + 0.75
+				grab_sound.play()
 
 func _process(delta: float) -> void:
 	move_hand(active_hand_left)
 	move_forg()
 	rotate_hand()
+	print(storm_strength)
 	pass
 
 func move_forg():

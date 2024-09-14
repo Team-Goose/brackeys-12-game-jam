@@ -27,10 +27,10 @@ func _ready() -> void:
 	var instance: TreeCell = tree_cell.instantiate()
 	var rect: Rect2 = instance.get_rect()
 	var vp_rect = get_viewport_rect().size
-	start_x = (vp_rect.x / 2) - (rect.size.x * BOXES_PER_ROW / 2)
-	start_x += rect.size.x / 2
+	start_x = (vp_rect.x / 2.0) - (rect.size.x * BOXES_PER_ROW / 2.0)
+	start_x += rect.size.x / 2.0
 	start_y = vp_rect.y
-	start_y -= rect.size.y / 2
+	start_y -= rect.size.y / 2.0
 	#player.global_position = Vector2(vp_rect.x / 2, vp_rect.y / 2)
 	for i in BOXES_PER_ROW:
 		grid.append([])
