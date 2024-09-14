@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://6flb8j1cfct4"]
 
-[ext_resource type="Theme" uid="uid://cr5mj0hosrwmu" path="res://assets/main_menu_theme.tres" id="1_mn6jb"]
+[ext_resource type="Theme" uid="uid://ti5t14mpo4hx" path="res://assets/other_menu_theme.tres" id="1_wfucw"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="2_n2oor"]
 
 [sub_resource type="SystemFont" id="SystemFont_40rcn"]
@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_mn6jb")
+theme = ExtResource("1_wfucw")
 script = ExtResource("2_n2oor")
 
 [node name="ColorRect" type="ColorRect" parent="."]
