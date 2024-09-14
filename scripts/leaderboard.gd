@@ -6,10 +6,6 @@ func _ready() -> void:
 	$HTTPRequest.request('https://brackeys-12-game-jam-api.fly.dev/scores/top10scores')
 
 func _on_request_completed(result, response_code, headers, body) -> void:
-	var num_children = %LeaderboardVBox.get_child_count()
-	for i in num_children - 5:
-		var child = %LeaderboardVBox.get_child(i + 5)
-		%LeaderboardVBox.remove_child(child)
 	%LoadingSpinnerBox.visible = false
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	for obj in json:
@@ -35,6 +31,16 @@ func _on_request_completed(result, response_code, headers, body) -> void:
 		%LeaderboardVBox.add_child(hbox)
 		%LeaderboardVBox.add_child(color_rect)
 
+func _on_mode_switched(toggled: bool) -> void:
+	var num_children = %LeaderboardVBox.get_child_count()
+	for i in num_children - 5:
+		var child = %LeaderboardVBox.get_child(i + 5)
+		child.queue_free()
+	$LoadingSpinnerBox.visible = true
+	if toggled:
+		$HTTPRequest.request('https://brackeys-12-game-jam-api.fly.dev/scores/top10scores')
+	else:
+		$HTTPRequest.request('https://brackeys-12-game-jam-api.fly.dev/scores/top10scores')
 
 func _on_return_to_title_button_pressed() -> void:
 	queue_free()

@@ -68,7 +68,7 @@ size_flags_horizontal = 3
 text = "Global"
 horizontal_alignment = 2
 
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/LeaderboardVBox/HBoxContainer"]
+[node name="GlobalCloseSwitch" type="CheckButton" parent="MarginContainer/VBoxContainer/LeaderboardVBox/HBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme = ExtResource("4_ohbjg")
@@ -148,4 +148,5 @@ radial_fill_degrees = 245.0
 texture_progress = ExtResource("3_gni6i")
 
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_request_completed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/LeaderboardVBox/HBoxContainer/GlobalCloseSwitch" to="." method="_on_mode_switched"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/ReturnToTitleButton" to="." method="_on_return_to_title_button_pressed"]

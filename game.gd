@@ -39,7 +39,7 @@ func _ready() -> void:
 func _on_get_high_score_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	if 'score' in json:
-		high_score = json['score']
+		high_score = int(json['score'])
 
 func check_save_game() -> void:
 	if not FileAccess.file_exists(GAME_SAVE_LOCATION):
