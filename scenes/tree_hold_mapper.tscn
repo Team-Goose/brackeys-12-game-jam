@@ -10,3 +10,9 @@ script = ExtResource("1_h3l8u")
 [node name="Player" parent="." instance=ExtResource("2_qo1ug")]
 z_index = 5
 position = Vector2(576, 324)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]

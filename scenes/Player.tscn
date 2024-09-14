@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://tak0406ssi1m"]
+[gd_scene load_steps=18 format=3 uid="uid://tak0406ssi1m"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_qp6hn"]
 [ext_resource type="Texture2D" uid="uid://con3f47rmbvgh" path="res://assets/tree_sprite_sheet.png" id="2_rs4gg"]
@@ -53,6 +53,14 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1it3"]
+atlas = ExtResource("4_35wrg")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubhwj"]
+atlas = ExtResource("4_35wrg")
+region = Rect2(256, 0, 32, 32)
+
 [node name="Player" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_qp6hn")
@@ -82,7 +90,8 @@ texture = SubResource("AtlasTexture_m6nkr")
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_46w7h")
 
-[node name="Sprite2D" type="Sprite2D" parent="Forg"]
+[node name="Legs" type="Sprite2D" parent="Forg"]
+unique_name_in_owner = true
 texture = SubResource("AtlasTexture_1upf8")
 
 [node name="Camera2D" type="Camera2D" parent="Forg"]
@@ -131,8 +140,19 @@ color = Color(1, 0.172549, 0.356863, 1)
 
 [node name="Label" type="Label" parent="Forg/Control"]
 visible = false
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="RArm" type="Sprite2D" parent="Forg"]
+unique_name_in_owner = true
+visible = false
+texture = SubResource("AtlasTexture_v1it3")
+
+[node name="LArm" type="Sprite2D" parent="Forg"]
+unique_name_in_owner = true
+visible = false
+texture = SubResource("AtlasTexture_ubhwj")
 
 [node name="GrabSoundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ntm1m")

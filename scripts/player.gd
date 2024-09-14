@@ -21,6 +21,7 @@ var stamina := 3.0
 var player_alive := true
 var go_direction := Vector2((randf()-0.5) * 500.0, -500)
 var last_pos := Vector2(0.0, 0.0)
+var start_time := Time.get_ticks_msec()
 
 func _ready() -> void:
 	sweat.play()
@@ -37,7 +38,6 @@ func _input(event: InputEvent) -> void:
 			var tree_cell: TreeCell = result.front().collider.get_parent()
 			
 			stamina = (float(tree_cell.hold_strength) / float(storm_strength)) * stamina + 0.1
-			print(str(stamina).pad_decimals(2))
 			
 			timer.start(stamina)
 			if tree_cell.hold_strength >= storm_strength: timer.stop()
@@ -61,10 +61,12 @@ func _process(delta: float) -> void:
 		stamina_bar_r.size.x = size
 		$Forg/Control/Label.text = str(timer.time_left).pad_decimals(3)
 		last_pos = camera.global_position
+		var time_elapsed = Time.get_ticks_msec() - start_time
+		%Legs.global_rotation_degrees = 20 * sin(time_elapsed / 5000)
 	else:
 		camera.global_position = last_pos
 		forg.global_position += go_direction * delta
-		go_direction.y += 980 *delta
+		go_direction.y += 980 * delta
 
 func move_forg():
 	# active and incative hand positions
@@ -102,6 +104,12 @@ func _on_storm_strength_change(val: int) -> void:
 func _on_timer_timeout() -> void:
 	if player_alive:
 		player_alive = false
+		$LHandLine.visible = false
+		$LHand.visible = false
+		$RHandLine.visible = false
+		$RHand.visible = false
+		%LArm.visible = true
+		%RArm.visible = true
 		timer.start(3.0)
 	else:
 		game_over.emit()
