@@ -95,7 +95,8 @@ func _on_storm_strength_change(val: int) -> void:
 
 
 func _on_timer_timeout() -> void:
-	player_alive = false
-	timer.start(5.0)
-	#game_over.emit()
-	#print("game over!")
+	if player_alive:
+		player_alive = false
+		timer.start(3.0)
+	else:
+		game_over.emit()
