@@ -1,6 +1,7 @@
 extends Node2D
 
 signal storm_strength_changed(val: int)
+signal game_over
 
 @onready var forg := $Forg
 @onready var lhand := $LHand
@@ -9,6 +10,7 @@ signal storm_strength_changed(val: int)
 @onready var rhand_line := $RHandLine
 @onready var camera := $Forg/Camera2D
 @onready var grab_sound := $GrabSoundEffect
+@onready var timer := $Timer
 
 var active_hand_left := true
 var storm_strength := 0
@@ -23,14 +25,15 @@ func _input(event: InputEvent) -> void:
 		var result := get_world_2d().direct_space_state.intersect_point(params, 1)
 		if result.size() == 1:
 			var tree_cell: TreeCell = result.front().collider.get_parent()
-			if tree_cell.hold_strength >= storm_strength:
-				if active_hand_left:
-					lhand.global_position = tree_cell.global_position
-				else:
-					rhand.global_position = tree_cell.global_position
-				active_hand_left = !active_hand_left
-				grab_sound.pitch_scale = (randf() / 2.0) + 0.75
-				grab_sound.play()
+			timer.start(tree_cell.hold_strength)
+			print(timer.time_left, timer.is_stopped())
+			if active_hand_left:
+				lhand.global_position = tree_cell.global_position
+			else:
+				rhand.global_position = tree_cell.global_position
+			active_hand_left = !active_hand_left
+			grab_sound.pitch_scale = (randf() / 2.0) + 0.75
+			grab_sound.play()
 
 func _process(delta: float) -> void:
 	move_hand(active_hand_left)
@@ -69,3 +72,8 @@ func _on_storm_strength_change(val: int) -> void:
 	if storm_strength != val:
 		storm_strength = val
 		storm_strength_changed.emit(val)
+
+
+func _on_timer_timeout() -> void:
+	game_over.emit()
+	print("game over!")

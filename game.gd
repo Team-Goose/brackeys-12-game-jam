@@ -185,7 +185,6 @@ func add_points(y_value: int, hold_strength: int) -> void:
 		var now = Time.get_ticks_msec()
 		if now - last_move_time <= 300:
 			multiplier *= 0.1
-			print('spam')
 		score += y_value * multiplier
 		last_highest_point = y_value
 		last_move_time = now
@@ -220,6 +219,7 @@ func reset_play(reset_score: bool = false, increase_day: bool = false) -> void:
 	thm_instance.connect('cell_l_clicked', _on_cell_l_clicked)
 	thm_instance.connect('cell_r_clicked', _on_cell_r_clicked)
 	thm_instance.get_node('Player').connect('storm_strength_changed', _on_storm_strength_changed)
+	thm_instance.get_node('Player').connect('game_over', _on_game_over)
 	add_child(thm_instance)
 	var gui_instance: GameGUI = game_gui_preload.instantiate()
 	$CanvasLayer.add_child(gui_instance)
