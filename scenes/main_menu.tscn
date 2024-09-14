@@ -150,5 +150,6 @@ theme = ExtResource("1_qvmq3")
 flat = true
 
 [connection signal="pressed" from="PlayButtonImage/PlayButton" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="LeaderboardButtonImage/LeaderboardButton" to="." method="_on_leaderboard_pressed"]
 [connection signal="pressed" from="QuitButtonImage/QuitButton" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="SettingsButtonImage/SettingsButton" to="." method="_on_options_pressed"]

@@ -8,6 +8,7 @@ var game_over_menu_preload = preload('res://scenes/game_over_menu.tscn')
 var day_finished_menu_preload = preload('res://scenes/day_finished_menu.tscn')
 var game_gui_preload = preload('res://scenes/game_gui.tscn')
 var options_menu_preload = preload('res://scenes/options_menu.tscn')
+var leaderboard_preload = preload('res://scenes/leaderboard.tscn')
 
 var master_bus_index := AudioServer.get_bus_index("Master")
 var music_bus_index := AudioServer.get_bus_index("Music")
@@ -192,6 +193,11 @@ func add_points(y_value: int, hold_strength: int) -> void:
 
 func _on_main_menu_play_pressed() -> void:
 	reset_play()
+
+func _on_main_menu_leaderboard_pressed() -> void:
+	print('HERE')
+	var instance = leaderboard_preload.instantiate()
+	$CanvasLayer.add_child(instance)
 
 func _on_main_menu_options_pressed() -> void:
 	var instance = options_menu_preload.instantiate()
