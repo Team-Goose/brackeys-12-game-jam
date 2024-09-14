@@ -185,6 +185,7 @@ func add_points(y_value: int, hold_strength: int) -> void:
 		var now = Time.get_ticks_msec()
 		if now - last_move_time <= 300:
 			multiplier *= 0.1
+			print('spam')
 		score += y_value * multiplier
 		last_highest_point = y_value
 		last_move_time = now

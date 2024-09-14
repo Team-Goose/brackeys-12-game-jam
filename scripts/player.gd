@@ -36,7 +36,6 @@ func _process(delta: float) -> void:
 	move_hand(active_hand_left)
 	move_forg()
 	rotate_hand()
-	print(storm_strength)
 	pass
 
 func move_forg():
