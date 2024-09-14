@@ -170,7 +170,7 @@ func add_points(y_value: int, hold_strength: int) -> void:
 	if y_value > last_highest_point:
 		# multiplier is 1 + however many minutes have passed + 10% of storm intensity
 		#   + 20% of hold strength + 10% of day number + 20% of distance from last height to new height
-		#   ...all multiplied by 0.1 if you waited less than 300ms between moves to discourage spamming
+		#   ...all multiplied by 0.05 if you waited less than 300ms between moves to discourage spamming
 		# timer calc:
 		var multiplier: float = ((%DayTimer.wait_time - %DayTimer.time_left) / 60) + 1
 		# storm intensity calc:
@@ -184,7 +184,7 @@ func add_points(y_value: int, hold_strength: int) -> void:
 		# wait time calc:
 		var now = Time.get_ticks_msec()
 		if now - last_move_time <= 300:
-			multiplier *= 0.1
+			multiplier *= 0.05
 		score += y_value * multiplier
 		last_highest_point = y_value
 		last_move_time = now

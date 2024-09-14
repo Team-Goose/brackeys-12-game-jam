@@ -1,18 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq2mf370b64nx"]
+[gd_scene load_steps=13 format=3 uid="uid://dq2mf370b64nx"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_5eync"]
 [ext_resource type="Theme" uid="uid://cr5mj0hosrwmu" path="res://assets/main_menu_theme.tres" id="1_qvmq3"]
+[ext_resource type="Texture2D" uid="uid://b0lgp2tfhmg47" path="res://assets/title_screen.png" id="2_js66m"]
+[ext_resource type="Texture2D" uid="uid://bsw8ewcgevp01" path="res://assets/main_menu_title_space_1.png" id="3_up2vj"]
+[ext_resource type="FontFile" uid="uid://de6r76ytsa151" path="res://assets/Crang.ttf" id="4_206sv"]
+[ext_resource type="Texture2D" uid="uid://chon1015hj1ec" path="res://assets/main_menu_title_space_2.png" id="5_axwhy"]
+[ext_resource type="Texture2D" uid="uid://tci0a386lrvc" path="res://assets/main_menu_button_1.png" id="6_myi5n"]
+[ext_resource type="Texture2D" uid="uid://ch5u5afj3mo8j" path="res://assets/main_menu_button_2.png" id="8_r528v"]
+[ext_resource type="Texture2D" uid="uid://d2pf6a51lffru" path="res://assets/main_menu_button_3.png" id="9_l0a03"]
+[ext_resource type="Texture2D" uid="uid://ckbl8lxs6nfm7" path="res://assets/settings_button.png" id="10_udduj"]
 
-[sub_resource type="SystemFont" id="SystemFont_8wopw"]
-subpixel_positioning = 0
+[sub_resource type="LabelSettings" id="LabelSettings_xboo4"]
+font = ExtResource("4_206sv")
+font_size = 96
 
-[sub_resource type="LabelSettings" id="LabelSettings_e7c7o"]
-font = SubResource("SystemFont_8wopw")
-font_size = 64
-font_color = Color(0, 0, 0, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_qg2nh"]
+font = ExtResource("4_206sv")
+font_size = 96
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,105 +30,125 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_qvmq3")
 script = ExtResource("1_5eync")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.305177, 0.100337, 1)
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_js66m")
 
-[node name="ColorRect" type="ColorRect" parent="ColorRect"]
-layout_mode = 1
-offset_right = 467.0
-offset_bottom = 94.0
+[node name="TitleRect1" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 11.0
+offset_right = 915.0
+offset_bottom = 201.0
+texture = ExtResource("3_up2vj")
 
-[node name="Label" type="Label" parent="ColorRect/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "LOGO HERE"
-label_settings = SubResource("LabelSettings_e7c7o")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="TitleLabel1" type="Label" parent="TitleRect1"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 53.0
+offset_right = 605.0
+offset_bottom = 150.0
+text = "Ribbiting"
+label_settings = SubResource("LabelSettings_xboo4")
 
-[node name="GridContainer" type="GridContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.667
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_constants/v_separation = 15
+[node name="TitleRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 187.0
+offset_right = 800.0
+offset_bottom = 345.0
+texture = ExtResource("5_axwhy")
 
-[node name="EmptyPanel1" type="Control" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="TitleLabel2" type="Label" parent="TitleRect2"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 31.0
+offset_right = 445.0
+offset_bottom = 128.0
+text = "Climb"
+label_settings = SubResource("LabelSettings_qg2nh")
 
-[node name="EmptyPanel2" type="Control" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="PlayButtonImage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 338.0
+offset_right = 620.0
+offset_bottom = 431.0
+texture = ExtResource("6_myi5n")
 
-[node name="PlayPanel" type="Panel" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="PlayButton" type="Button" parent="GridContainer/PlayPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PlayButton" type="Button" parent="PlayButtonImage"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_left = 8.0
+offset_top = -3.0
+offset_right = 208.0
+offset_bottom = 97.0
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_qvmq3")
 text = "Play!"
+flat = true
 
-[node name="OptionsPanel" type="Panel" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="LeaderboardButtonImage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 424.0
+offset_right = 628.0
+offset_bottom = 522.0
+texture = ExtResource("8_r528v")
 
-[node name="OptionsButton" type="Button" parent="GridContainer/OptionsPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="LeaderboardButton" type="Button" parent="LeaderboardButtonImage"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 211.0
+offset_bottom = 103.0
 mouse_default_cursor_shape = 2
-text = "Options..."
+theme = ExtResource("1_qvmq3")
+theme_override_font_sizes/font_size = 20
+text = "Leaderboard"
+flat = true
 
-[node name="QuitPanel" type="Panel" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="QuitButtonImage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 514.0
+offset_right = 631.0
+offset_bottom = 614.0
+texture = ExtResource("9_l0a03")
 
-[node name="QuitButton" type="Button" parent="GridContainer/QuitPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="QuitButton" type="Button" parent="QuitButtonImage"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_left = 3.0
+offset_right = 211.0
+offset_bottom = 100.0
 mouse_default_cursor_shape = 2
-text = "Quit :("
+theme = ExtResource("1_qvmq3")
+text = "Quit"
+flat = true
 
-[node name="EmptyPanel3" type="Control" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="SettingsButtonImage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 552.0
+offset_right = 100.0
+offset_bottom = 630.0
+texture = ExtResource("10_udduj")
 
-[connection signal="pressed" from="GridContainer/PlayPanel/PlayButton" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="GridContainer/OptionsPanel/OptionsButton" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="GridContainer/QuitPanel/QuitButton" to="." method="_on_quit_pressed"]
+[node name="SettingsButton" type="Button" parent="SettingsButtonImage"]
+layout_mode = 0
+offset_right = 78.0
+offset_bottom = 78.0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_qvmq3")
+flat = true
+
+[connection signal="pressed" from="PlayButtonImage/PlayButton" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="QuitButtonImage/QuitButton" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="SettingsButtonImage/SettingsButton" to="." method="_on_options_pressed"]
