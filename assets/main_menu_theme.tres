@@ -1,69 +1,15 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cr5mj0hosrwmu"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cr5mj0hosrwmu"]
 
-[sub_resource type="SystemFont" id="SystemFont_uftr3"]
+[ext_resource type="FontFile" uid="uid://de6r76ytsa151" path="res://assets/Crang.ttf" id="1_phvl5"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fa6be"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.3)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mbk4o"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gray"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2rw4"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1.41986e-06, 0.541193, 0.281066, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5m8w"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0, 0.807843, 0.431373, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgjhy"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(9.3855e-07, 0.433215, 0.2202, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lttfo"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101961, 0.101961, 0.101961, 0)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -71,13 +17,13 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [resource]
-Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
-Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
-Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.360784, 0.360784, 0.360784, 1)
+Button/colors/font_focus_color = Color(0.87451, 0.87451, 0.87451, 1)
+Button/colors/font_hover_color = Color(0.902753, 0.872241, 0.438653, 1)
+Button/colors/font_hover_pressed_color = Color(0.654928, 0.983854, 0.468077, 1)
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0.654902, 0.984314, 0.466667, 1)
 Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
 Button/colors/icon_focus_color = Color(1, 1, 1, 1)
 Button/colors/icon_hover_color = Color(1, 1, 1, 1)
@@ -89,9 +35,16 @@ Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 32
-Button/fonts/font = SubResource("SystemFont_uftr3")
-Button/styles/disabled = SubResource("StyleBoxFlat_fa6be")
-Button/styles/focus = SubResource("StyleBoxFlat_8gray")
-Button/styles/hover = SubResource("StyleBoxFlat_c2rw4")
-Button/styles/normal = SubResource("StyleBoxFlat_c5m8w")
-Button/styles/pressed = SubResource("StyleBoxFlat_bgjhy")
+Button/fonts/font = ExtResource("1_phvl5")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_phvl5")
+Label/styles/normal = SubResource("StyleBoxEmpty_mbk4o")
+Panel/styles/panel = SubResource("StyleBoxFlat_lttfo")

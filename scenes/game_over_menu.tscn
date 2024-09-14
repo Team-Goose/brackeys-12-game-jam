@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3wvvr743kcst"]
 
-[ext_resource type="Theme" uid="uid://cr5mj0hosrwmu" path="res://assets/main_menu_theme.tres" id="1_uwhme"]
+[ext_resource type="Theme" uid="uid://ti5t14mpo4hx" path="res://assets/other_menu_theme.tres" id="1_7vpnt"]
 [ext_resource type="Script" path="res://scripts/game_over_menu.gd" id="2_gxsm3"]
 
 [sub_resource type="SystemFont" id="SystemFont_40rcn"]
@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_uwhme")
+theme = ExtResource("1_7vpnt")
 script = ExtResource("2_gxsm3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
