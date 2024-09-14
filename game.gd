@@ -9,6 +9,7 @@ var day_finished_menu_preload = preload('res://scenes/day_finished_menu.tscn')
 var game_gui_preload = preload('res://scenes/game_gui.tscn')
 var options_menu_preload = preload('res://scenes/options_menu.tscn')
 var leaderboard_preload = preload('res://scenes/leaderboard.tscn')
+var username_prompt_preload = preload("res://scenes/username_prompt.tscn")
 
 var master_bus_index := AudioServer.get_bus_index("Master")
 var music_bus_index := AudioServer.get_bus_index("Music")
@@ -21,13 +22,24 @@ var score := 0
 var storm_strength := 0
 var username := ''
 
+var high_score := 0
+
 func _ready() -> void:
 	# uncomment for debug save overwriting:
 	#save_game({
 		#'day': 1,
-		#'score': 0
+		#'score': 0,
+		#'username': ''
 	#})
 	load_game()
+	if username != '':
+		%MainMenu.set_username(username)
+		$GetHighScoreHTTPRequest.request('https://brackeys-12-game-jam-api.fly.dev/scores/myscore/' + username)
+
+func _on_get_high_score_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	if 'score' in json:
+		high_score = json['score']
 
 func check_save_game() -> void:
 	if not FileAccess.file_exists(GAME_SAVE_LOCATION):
@@ -109,12 +121,21 @@ func _on_day_finished() -> void:
 	get_tree().paused = true
 
 func _on_game_over() -> void:
-	var instance: GameOverMenu = game_over_menu_preload.instantiate()
-	instance.connect('try_again_pressed', reset_play)
-	instance.connect('return_to_title_pressed', return_to_title)
-	$CanvasLayer.add_child(instance)
+	var game_over_instance: GameOverMenu = game_over_menu_preload.instantiate()
+	game_over_instance.connect('try_again_pressed', reset_play)
+	game_over_instance.connect('return_to_title_pressed', return_to_title)
+	game_over_instance.high_score = true if high_score <= score else false
+	$CanvasLayer.add_child(game_over_instance)
+	if username == '':
+		var username_prompt_instance: UsernamePrompt = username_prompt_preload.instantiate()
+		username_prompt_instance.connect('username_set', _on_username_set)
+		$CanvasLayer.add_child(username_prompt_instance)
 	get_tree().paused = true
-	
+
+func _on_username_set(un: String) -> void:
+	username = un
+	%MainMenu.set_username(un)
+	save_game({ 'username': un })
 
 func show_pause_menu() -> void:
 	var instance: PauseMenu = pause_menu_preload.instantiate()
@@ -123,9 +144,17 @@ func show_pause_menu() -> void:
 	$CanvasLayer.add_child(instance)
 	get_tree().paused = true
 
-func return_to_title(save: bool = false) -> void:
+func return_to_title(save: bool = false, reset: bool = false) -> void:
 	if save:
 		day += 1
+		save_game({
+			'day': day,
+			'score': score,
+		})
+	elif reset:
+		set_high_score()
+		day = 1
+		score = 0
 		save_game({
 			'day': day,
 			'score': score,
@@ -137,14 +166,31 @@ func return_to_title(save: bool = false) -> void:
 	%MainMenu.visible = true
 	remove_child($TreeHoldMapper)
 
-func quit(save: bool = false) -> void:
+func quit(save: bool = false, reset: bool = false) -> void:
 	if save:
 		day += 1
 		save_game({
 			'day': day,
 			'score': score,
 		})
+	elif reset:
+		set_high_score()
+		day = 1
+		score = 0
+		save_game({
+			'day': day,
+			'score': score,
+		})
 	get_tree().quit()
+
+func set_high_score() -> void:
+	if score > high_score:
+		high_score = score
+		$SetHighScoreHTTPRequest.request(
+			'https://brackeys-12-game-jam-api.fly.dev/scores/newscore/' + username + '/' + str(score) + '/' + str(day),
+			[],
+			HTTPClient.METHOD_POST,
+		)
 
 func hide_pause_menu() -> void:
 	get_tree().paused = false
@@ -195,7 +241,6 @@ func _on_main_menu_play_pressed() -> void:
 	reset_play()
 
 func _on_main_menu_leaderboard_pressed() -> void:
-	print('HERE')
 	var instance = leaderboard_preload.instantiate()
 	$CanvasLayer.add_child(instance)
 
@@ -230,6 +275,7 @@ func reset_play(reset_score: bool = false, increase_day: bool = false) -> void:
 	var gui_instance: GameGUI = game_gui_preload.instantiate()
 	$CanvasLayer.add_child(gui_instance)
 	if reset_score:
+		set_high_score()
 		score = 0
 		day = 1
 	elif increase_day:
@@ -256,3 +302,8 @@ func _on_tambourine_finished() -> void:
 			%Marimba2.play()
 		if storm_strength > 8:
 			%Trumpet.play()
+
+func _on_set_high_score_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+	print(response_code)
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	print(json)

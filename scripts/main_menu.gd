@@ -5,6 +5,9 @@ signal leaderboard_pressed
 signal options_pressed
 signal quit_pressed
 
+func set_username(username: String) -> void:
+	%LeaderboardButton.disabled = true if username == '' else false 
+
 func _on_play_pressed() -> void:
 	play_pressed.emit()
 

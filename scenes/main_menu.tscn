@@ -102,6 +102,7 @@ offset_bottom = 522.0
 texture = ExtResource("8_r528v")
 
 [node name="LeaderboardButton" type="Button" parent="LeaderboardButtonImage"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 0
 offset_left = 3.0
@@ -111,6 +112,7 @@ offset_bottom = 103.0
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_qvmq3")
 theme_override_font_sizes/font_size = 20
+disabled = true
 text = "Leaderboard"
 flat = true
 
