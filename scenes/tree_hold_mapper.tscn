@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmfpfrh6sjf03"]
+[gd_scene load_steps=7 format=3 uid="uid://cmfpfrh6sjf03"]
 
 [ext_resource type="Script" path="res://scripts/tree_hold_mapper.gd" id="1_h3l8u"]
 [ext_resource type="PackedScene" uid="uid://tak0406ssi1m" path="res://scenes/Player.tscn" id="2_qo1ug"]
 [ext_resource type="Texture2D" uid="uid://chsgd0bbgef44" path="res://assets/game_bgs/bg_stitched.png" id="3_47w6v"]
 [ext_resource type="Texture2D" uid="uid://cins3fes40h3m" path="res://assets/game_bgs/fg_BOTTOM.png" id="3_wg7jx"]
 [ext_resource type="Texture2D" uid="uid://c4vv5nyn20ltq" path="res://assets/game_bgs/bg_BOTTOM.png" id="4_48jp3"]
+[ext_resource type="Texture2D" uid="uid://bus1tyfcuhdgs" path="res://assets/game_bgs/bg_TOP.png" id="5_tx8d1"]
 
 [node name="TreeHoldMapper" type="Node2D"]
 process_mode = 1
@@ -34,6 +35,13 @@ texture_filter = 1
 position = Vector2(554, -269)
 scale = Vector2(6.11, 6.11)
 texture = ExtResource("4_48jp3")
+
+[node name="ForestPeak" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(554, -269)
+scale = Vector2(6.11, 6.11)
+texture = ExtResource("5_tx8d1")
 
 [node name="ForegroundMushrooms" type="Sprite2D" parent="."]
 z_index = 6
