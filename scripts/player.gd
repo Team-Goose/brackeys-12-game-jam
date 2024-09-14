@@ -18,6 +18,9 @@ signal game_over
 var active_hand_left := true
 var storm_strength := 0
 var stamina := 0.0
+var player_alive := true
+var go_direction := Vector2((randf()-0.5) * 500.0, -500)
+var last_pos := Vector2(0.0, 0.0)
 
 func _ready() -> void:
 	sweat.play()
@@ -43,14 +46,20 @@ func _input(event: InputEvent) -> void:
 			grab_sound.play()
 
 func _process(delta: float) -> void:
-	move_hand(active_hand_left)
-	move_forg()
-	rotate_hand()
-	sweat.visible = timer.time_left < 0.8 && !timer.is_stopped()
-	var size = timer.time_left * 10.0 if timer.time_left * 10.0 < 20.0 else 20.0
-	stamina_bar_l.size.x = size
-	stamina_bar_r.size.x = size
-	$Forg/Control/Label.text = str(timer.time_left).pad_decimals(3)
+	if player_alive:
+		move_hand(active_hand_left)
+		move_forg()
+		rotate_hand()
+		sweat.visible = timer.time_left < 0.8 && !timer.is_stopped()
+		var size = timer.time_left * 10.0 if timer.time_left * 10.0 < 20.0 else 20.0
+		stamina_bar_l.size.x = size
+		stamina_bar_r.size.x = size
+		$Forg/Control/Label.text = str(timer.time_left).pad_decimals(3)
+		last_pos = camera.global_position
+	else:
+		camera.global_position = last_pos
+		forg.global_position += go_direction * delta
+		go_direction.y += 980 *delta
 
 func move_forg():
 	# active and incative hand positions
@@ -86,5 +95,7 @@ func _on_storm_strength_change(val: int) -> void:
 
 
 func _on_timer_timeout() -> void:
-	game_over.emit()
-	print("game over!")
+	player_alive = false
+	timer.start(5.0)
+	#game_over.emit()
+	#print("game over!")
