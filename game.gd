@@ -302,8 +302,3 @@ func _on_tambourine_finished() -> void:
 			%Marimba2.play()
 		if storm_strength > 8:
 			%Trumpet.play()
-
-func _on_set_high_score_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
-	print(response_code)
-	var json = JSON.parse_string(body.get_string_from_utf8())
-	print(json)
