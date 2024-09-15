@@ -21,16 +21,17 @@ script = ExtResource("1_h3l8u")
 z_index = 5
 position = Vector2(576, 324)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Player"]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Player/ParallaxBackground"]
 z_index = -2
 z_as_relative = false
+position = Vector2(576, 324)
 motion_mirroring = Vector2(0, 7332)
 
-[node name="StitchedBG" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="StitchedBG" type="Sprite2D" parent="Player/ParallaxBackground/ParallaxLayer"]
 texture_filter = 1
-position = Vector2(554, -4851)
+position = Vector2(-22, -5175)
 scale = Vector2(6.10976, 6.10976)
 texture = ExtResource("3_47w6v")
 

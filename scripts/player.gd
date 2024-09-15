@@ -22,6 +22,7 @@ var player_alive := true
 var go_direction := Vector2((randf()-0.5) * 500.0, -500)
 var last_pos := Vector2(0.0, 0.0)
 var start_time := Time.get_ticks_msec()
+var bad_holds_in_a_row := 0
 
 func _ready() -> void:
 	sweat.play()
@@ -37,7 +38,13 @@ func _input(event: InputEvent) -> void:
 		if result.size() == 1:
 			var tree_cell: TreeCell = result.front().collider.get_parent()
 			
-			stamina = (float(tree_cell.hold_strength) / float(storm_strength)) * stamina + 0.1
+			var x = float(tree_cell.hold_strength) - float(storm_strength)
+			stamina = (3.65 / (1.0 + pow(x / 8.0, 2.0))) - 0.6
+			if stamina <= 1.5 || tree_cell.hold_strength <= 3:
+				bad_holds_in_a_row += 1
+				stamina -= bad_holds_in_a_row / 5.0
+			else:
+				bad_holds_in_a_row = 0
 			
 			timer.start(stamina)
 			if tree_cell.hold_strength >= storm_strength: timer.stop()
@@ -62,7 +69,7 @@ func _process(delta: float) -> void:
 		$Forg/Control/Label.text = str(timer.time_left).pad_decimals(3)
 		last_pos = camera.global_position
 		var time_elapsed = Time.get_ticks_msec() - start_time
-		%Legs.global_rotation_degrees = 20 * sin(time_elapsed / 5000)
+		%Legs.global_rotation_degrees = 10 * sin(time_elapsed / 1200)
 	else:
 		camera.global_position = last_pos
 		forg.global_position += go_direction * delta
@@ -94,12 +101,10 @@ func rotate_hand():
 	lhand.rotation = forg.global_position.angle_to_point(lhand.global_position) + deg_to_rad(90)
 	rhand.rotation = forg.global_position.angle_to_point(rhand.global_position) + deg_to_rad(90)
 
-
 func _on_storm_strength_change(val: int) -> void:
 	if storm_strength != val:
 		storm_strength = val
 		storm_strength_changed.emit(val)
-
 
 func _on_timer_timeout() -> void:
 	if player_alive:

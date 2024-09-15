@@ -124,6 +124,7 @@ func _on_game_over() -> void:
 	var game_over_instance: GameOverMenu = game_over_menu_preload.instantiate()
 	game_over_instance.connect('try_again_pressed', reset_play)
 	game_over_instance.connect('return_to_title_pressed', return_to_title)
+	game_over_instance.connect('quit_pressed', quit)
 	game_over_instance.high_score = true if high_score <= score else false
 	$CanvasLayer.add_child(game_over_instance)
 	if username == '':
