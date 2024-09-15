@@ -152,6 +152,7 @@ theme = ExtResource("1_qvmq3")
 flat = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 558.0
 offset_top = 607.0
 offset_right = 632.0
@@ -159,10 +160,13 @@ offset_bottom = 647.0
 texture = ExtResource("9_l0a03")
 
 [node name="CreditsButton" type="Button" parent="TextureRect"]
-offset_left = 8.0
-offset_top = 3.99997
-offset_right = 71.0
-offset_bottom = 35.0
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 76.0
+offset_bottom = 37.0
+theme = ExtResource("1_qvmq3")
+theme_override_font_sizes/font_size = 12
 text = "Credits"
 flat = true
 

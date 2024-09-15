@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cpflwjn0u4k2b"]
 
-[ext_resource type="Theme" uid="uid://ti5t14mpo4hx" path="res://assets/other_menu_theme.tres" id="1_foef7"]
+[ext_resource type="Theme" uid="uid://cr5mj0hosrwmu" path="res://assets/main_menu_theme.tres" id="1_lanbq"]
 [ext_resource type="Texture2D" uid="uid://b0lgp2tfhmg47" path="res://assets/title_screen.png" id="2_imak0"]
 [ext_resource type="Script" path="res://scripts/credits.gd" id="2_x7ous"]
 [ext_resource type="Texture2D" uid="uid://cqmv84agfojlt" path="res://assets/settings_screen.png" id="3_cspj6"]
@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_foef7")
+theme = ExtResource("1_lanbq")
 script = ExtResource("2_x7ous")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -35,6 +35,7 @@ offset_left = 425.0
 offset_top = 122.0
 offset_right = 505.0
 offset_bottom = 139.0
+theme_override_font_sizes/font_size = 24
 text = "Credits:
 
 Joseph Horner
@@ -51,10 +52,12 @@ scale = Vector2(2.62162, 2.89286)
 texture = ExtResource("4_bw0f3")
 
 [node name="Button" type="Button" parent="MainMenuButton3"]
-offset_left = -21.3608
-offset_top = -15.5556
-offset_right = 23.6392
-offset_bottom = 15.4444
+offset_left = -34.0
+offset_top = -12.0
+offset_right = 36.0
+offset_bottom = 16.0
+theme = ExtResource("1_lanbq")
+theme_override_font_sizes/font_size = 18
 text = "Back"
 flat = true
 

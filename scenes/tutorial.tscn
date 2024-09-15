@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=3 uid="uid://drgwd28u5lpt8"]
+[gd_scene load_steps=11 format=3 uid="uid://drgwd28u5lpt8"]
 
-[ext_resource type="Theme" uid="uid://ti5t14mpo4hx" path="res://assets/other_menu_theme.tres" id="1_0ajls"]
 [ext_resource type="Theme" uid="uid://cr5mj0hosrwmu" path="res://assets/main_menu_theme.tres" id="1_ecscw"]
 [ext_resource type="Script" path="res://scripts/tutorial.gd" id="2_5ibhy"]
 [ext_resource type="Texture2D" uid="uid://b0lgp2tfhmg47" path="res://assets/title_screen.png" id="2_jddkr"]
@@ -52,11 +51,11 @@ offset_left = 418.0
 offset_top = 100.0
 offset_right = 1100.0
 offset_bottom = 332.0
-text = "ribbeting climb. 
-Helping a little frog go to the jungle 
+text = "Help a little frog go to the jungle 
 tops to see the world!
 
-you get good holds by clicking on 
+
+You get good holds by clicking on 
 bigger mushroom clumps:
 
 
@@ -70,8 +69,9 @@ bigger mushroom clumps:
    When the music and weather pick up,
    MAKE SURE YOU GRAB A GOOD HOLD!
 
-  survive the storm and see if
-  you can get to the jungle canopy."
+  Survive the storm and see if
+  you can get to the jungle canopy and
+  top the leaderboard!"
 label_settings = SubResource("LabelSettings_v3w1p")
 
 [node name="Wood" type="TextureRect" parent="TextureRect"]
@@ -122,7 +122,7 @@ offset_left = -49.8077
 offset_top = -17.5217
 offset_right = 54.1923
 offset_bottom = 23.4783
-theme = ExtResource("1_0ajls")
+theme = ExtResource("1_ecscw")
 theme_override_font_sizes/font_size = 17
 text = "PLAY"
 flat = true
