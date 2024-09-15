@@ -17,23 +17,29 @@ gradient = SubResource("Gradient_g6md2")
 process_mode = 1
 script = ExtResource("1_h3l8u")
 
+[node name="StitchedBG" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(554, -4851)
+scale = Vector2(6.10976, 6.10976)
+texture = ExtResource("3_47w6v")
+
+[node name="StitchedBG2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(554, -12183)
+scale = Vector2(6.10976, 6.10976)
+texture = ExtResource("3_47w6v")
+
+[node name="StitchedBG3" type="Sprite2D" parent="."]
+z_index = -2
+z_as_relative = false
+texture_filter = 1
+position = Vector2(554, -19515)
+scale = Vector2(6.10976, 6.10976)
+texture = ExtResource("3_47w6v")
+
 [node name="Player" parent="." instance=ExtResource("2_qo1ug")]
 z_index = 5
 position = Vector2(576, 324)
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Player"]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Player/ParallaxBackground"]
-z_index = -2
-z_as_relative = false
-position = Vector2(576, 324)
-motion_mirroring = Vector2(0, 7332)
-
-[node name="StitchedBG" type="Sprite2D" parent="Player/ParallaxBackground/ParallaxLayer"]
-texture_filter = 1
-position = Vector2(-22, -5175)
-scale = Vector2(6.10976, 6.10976)
-texture = ExtResource("3_47w6v")
 
 [node name="ForestFloor" type="Sprite2D" parent="."]
 z_index = -1

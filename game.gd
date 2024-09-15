@@ -133,6 +133,7 @@ func _on_game_over() -> void:
 		var username_prompt_instance: UsernamePrompt = username_prompt_preload.instantiate()
 		username_prompt_instance.connect('username_set', _on_username_set)
 		$CanvasLayer.add_child(username_prompt_instance)
+	%DayTimer.stop()
 	get_tree().paused = true
 
 func _on_username_set(un: String) -> void:
