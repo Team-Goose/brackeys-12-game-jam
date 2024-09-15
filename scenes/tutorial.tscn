@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://drgwd28u5lpt8"]
+[gd_scene load_steps=12 format=3 uid="uid://drgwd28u5lpt8"]
 
 [ext_resource type="Theme" uid="uid://ti5t14mpo4hx" path="res://assets/other_menu_theme.tres" id="1_0ajls"]
 [ext_resource type="Theme" uid="uid://cr5mj0hosrwmu" path="res://assets/main_menu_theme.tres" id="1_ecscw"]
+[ext_resource type="Script" path="res://scenes/tutorial.gd" id="2_5ibhy"]
 [ext_resource type="Texture2D" uid="uid://b0lgp2tfhmg47" path="res://assets/title_screen.png" id="2_jddkr"]
 [ext_resource type="Texture2D" uid="uid://cqmv84agfojlt" path="res://assets/settings_screen.png" id="3_hcf1l"]
 [ext_resource type="Texture2D" uid="uid://con3f47rmbvgh" path="res://assets/tree_sprite_sheet.png" id="4_v8g8f"]
@@ -30,6 +31,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ecscw")
+script = ExtResource("2_5ibhy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -54,9 +56,8 @@ text = "ribbeting climb.
 Helping a little frog go to the jungle 
 tops to see the world!
 
-
-you get good holds on bigger
- mushroom clumps:
+you get good holds by clicking on 
+bigger mushroom clumps:
 
 
  
@@ -76,37 +77,38 @@ label_settings = SubResource("LabelSettings_v3w1p")
 [node name="Wood" type="TextureRect" parent="TextureRect"]
 layout_mode = 0
 offset_left = 484.0
-offset_top = 220.0
+offset_top = 207.0
 offset_right = 516.0
-offset_bottom = 252.0
+offset_bottom = 239.0
 texture = SubResource("AtlasTexture_ysyx5")
 
 [node name="Wood2" type="TextureRect" parent="TextureRect"]
 layout_mode = 0
 offset_left = 551.0
-offset_top = 220.0
+offset_top = 207.0
 offset_right = 583.0
-offset_bottom = 252.0
+offset_bottom = 239.0
 texture = SubResource("AtlasTexture_ysyx5")
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/Wood2"]
 layout_mode = 0
-offset_top = -1.0
 offset_right = 32.0
-offset_bottom = 31.0
+offset_bottom = 32.0
 texture = SubResource("AtlasTexture_l30e1")
 
 [node name="Wood3" type="TextureRect" parent="TextureRect"]
-offset_left = 615.0
-offset_top = 220.0
-offset_right = 647.0
-offset_bottom = 252.0
+layout_mode = 0
+offset_left = 617.0
+offset_top = 207.0
+offset_right = 649.0
+offset_bottom = 239.0
 texture = SubResource("AtlasTexture_ysyx5")
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/Wood3"]
 layout_mode = 0
+offset_top = 1.0
 offset_right = 32.0
-offset_bottom = 32.0
+offset_bottom = 33.0
 texture = SubResource("AtlasTexture_5tobo")
 
 [node name="MainMenuButton1" type="Sprite2D" parent="TextureRect"]
@@ -124,3 +126,5 @@ theme = ExtResource("1_0ajls")
 theme_override_font_sizes/font_size = 17
 text = "PLAY"
 flat = true
+
+[connection signal="pressed" from="TextureRect/MainMenuButton1/Button" to="." method="_on_button_pressed"]
