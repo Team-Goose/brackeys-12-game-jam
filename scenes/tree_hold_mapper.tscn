@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmfpfrh6sjf03"]
+[gd_scene load_steps=9 format=3 uid="uid://cmfpfrh6sjf03"]
 
 [ext_resource type="Script" path="res://scripts/tree_hold_mapper.gd" id="1_h3l8u"]
 [ext_resource type="PackedScene" uid="uid://tak0406ssi1m" path="res://scenes/Player.tscn" id="2_qo1ug"]
+[ext_resource type="Texture2D" uid="uid://chsgd0bbgef44" path="res://assets/game_bgs/bg_stitched.png" id="3_47w6v"]
+[ext_resource type="Texture2D" uid="uid://cins3fes40h3m" path="res://assets/game_bgs/fg_BOTTOM.png" id="3_wg7jx"]
+[ext_resource type="Texture2D" uid="uid://c4vv5nyn20ltq" path="res://assets/game_bgs/bg_BOTTOM.png" id="4_48jp3"]
+[ext_resource type="Texture2D" uid="uid://bus1tyfcuhdgs" path="res://assets/game_bgs/bg_TOP.png" id="5_tx8d1"]
+
+[sub_resource type="Gradient" id="Gradient_g6md2"]
+colors = PackedColorArray(0.215686, 0.45098, 0.235294, 1, 0.215686, 0.45098, 0.235294, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xrsn7"]
+gradient = SubResource("Gradient_g6md2")
 
 [node name="TreeHoldMapper" type="Node2D"]
 process_mode = 1
@@ -10,3 +20,46 @@ script = ExtResource("1_h3l8u")
 [node name="Player" parent="." instance=ExtResource("2_qo1ug")]
 z_index = 5
 position = Vector2(576, 324)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Player"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Player/ParallaxBackground"]
+z_index = -2
+z_as_relative = false
+position = Vector2(576, 324)
+motion_mirroring = Vector2(0, 7332)
+
+[node name="StitchedBG" type="Sprite2D" parent="Player/ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+position = Vector2(-22, -5175)
+scale = Vector2(6.10976, 6.10976)
+texture = ExtResource("3_47w6v")
+
+[node name="ForestFloor" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
+texture_filter = 1
+position = Vector2(554, -269)
+scale = Vector2(6.11, 6.11)
+texture = ExtResource("4_48jp3")
+
+[node name="ForestPeak" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
+texture_filter = 1
+position = Vector2(554, -18599)
+scale = Vector2(6.11, 6.11)
+texture = ExtResource("5_tx8d1")
+
+[node name="InfiniteSky" type="Sprite2D" parent="ForestPeak"]
+position = Vector2(-0.0425498, -4479.91)
+scale = Vector2(5.12613, 135.31)
+texture = SubResource("GradientTexture2D_xrsn7")
+
+[node name="ForegroundMushrooms" type="Sprite2D" parent="."]
+z_index = 6
+z_as_relative = false
+texture_filter = 1
+position = Vector2(553.773, -268.5)
+scale = Vector2(6.11, 6.11)
+texture = ExtResource("3_wg7jx")

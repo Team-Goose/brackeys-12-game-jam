@@ -1,4 +1,4 @@
-extends Node2D
+class_name Player extends Node2D
 
 signal storm_strength_changed(val: int)
 signal game_over
@@ -21,6 +21,8 @@ var stamina := 3.0
 var player_alive := true
 var go_direction := Vector2((randf()-0.5) * 500.0, -500)
 var last_pos := Vector2(0.0, 0.0)
+var start_time := Time.get_ticks_msec()
+var bad_holds_in_a_row := 0
 
 func _ready() -> void:
 	sweat.play()
@@ -33,11 +35,29 @@ func _input(event: InputEvent) -> void:
 		params.collide_with_areas = true
 		
 		var result := get_world_2d().direct_space_state.intersect_point(params, 1)
-		if result.size() == 1:
-			var tree_cell: TreeCell = result.front().collider.get_parent()
+		var tree_cell: TreeCell = result.front().collider.get_parent()
+		
+		var is_same_cell = (
+			active_hand_left &&
+			abs(rhand.global_position.x - tree_cell.global_position.x) < 2 &&
+			abs(rhand.global_position.y - tree_cell.global_position.y) < 2
+		) || (
+			!active_hand_left &&
+			abs(lhand.global_position.x - tree_cell.global_position.x) < 2 &&
+			abs(lhand.global_position.y - tree_cell.global_position.y) < 2
+		)
+		
+		if !is_same_cell:
+			var x = float(tree_cell.hold_strength) - float(storm_strength)
+			# this function maxes out at ~3 seconds for holds only 1 point weaker than the storm
+			#   and floors at ~1 second for holds 9 points weaker than the storm:
+			stamina = (3.65 / (1.0 + pow(x / 8.0, 2.0))) - 0.6
 			
-			stamina = (float(tree_cell.hold_strength) / float(storm_strength)) * stamina + 0.1
-			print(str(stamina).pad_decimals(2))
+			if stamina <= 1.5 || tree_cell.hold_strength <= 3:
+				bad_holds_in_a_row += 1
+				stamina -= bad_holds_in_a_row / 5.0
+			else:
+				bad_holds_in_a_row = 0
 			
 			timer.start(stamina)
 			if tree_cell.hold_strength >= storm_strength: timer.stop()
@@ -56,15 +76,17 @@ func _process(delta: float) -> void:
 		move_forg()
 		rotate_hand()
 		sweat.visible = timer.time_left < 0.8 && !timer.is_stopped()
-		var size = timer.time_left * 10.0 if timer.time_left * 10.0 < 20.0 else 20.0
+		var size = timer.time_left * 6.667 # max 3 seconds so max 20px
 		stamina_bar_l.size.x = size
 		stamina_bar_r.size.x = size
 		$Forg/Control/Label.text = str(timer.time_left).pad_decimals(3)
 		last_pos = camera.global_position
+		var time_elapsed = Time.get_ticks_msec() - start_time
+		%Legs.global_rotation_degrees = 10 * sin(time_elapsed / 1200)
 	else:
 		camera.global_position = last_pos
 		forg.global_position += go_direction * delta
-		go_direction.y += 980 *delta
+		go_direction.y += 980 * delta
 
 func move_forg():
 	# active and incative hand positions
@@ -92,16 +114,23 @@ func rotate_hand():
 	lhand.rotation = forg.global_position.angle_to_point(lhand.global_position) + deg_to_rad(90)
 	rhand.rotation = forg.global_position.angle_to_point(rhand.global_position) + deg_to_rad(90)
 
-
 func _on_storm_strength_change(val: int) -> void:
 	if storm_strength != val:
 		storm_strength = val
 		storm_strength_changed.emit(val)
 
-
 func _on_timer_timeout() -> void:
 	if player_alive:
 		player_alive = false
+		$LHandLine.visible = false
+		$LHand.visible = false
+		$RHandLine.visible = false
+		$RHand.visible = false
+		%LArm.visible = true
+		%RArm.visible = true
 		timer.start(3.0)
 	else:
 		game_over.emit()
+
+func set_storm_day(new_day: int) -> void:
+	%Storm.set_day(new_day)

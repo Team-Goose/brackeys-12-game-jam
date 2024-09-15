@@ -87,3 +87,6 @@ func add_tree_cell(i: int, j: int) -> void:
 	instance.cell_y = j
 	add_child(instance)
 	grid[i].append(instance)
+
+func set_storm_day(new_day: int) -> void:
+	$Player.set_storm_day(new_day)

@@ -1,6 +1,9 @@
 class_name RainParticles extends Node2D
 
-var intensity := 0
+var intensity := -1
+
+func _ready() -> void:
+	intensity_off()
 
 func intensity_off() -> void:
 	if intensity != 0:
