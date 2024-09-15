@@ -10,6 +10,8 @@ var game_gui_preload = preload('res://scenes/game_gui.tscn')
 var options_menu_preload = preload('res://scenes/options_menu.tscn')
 var leaderboard_preload = preload('res://scenes/leaderboard.tscn')
 var username_prompt_preload = preload("res://scenes/username_prompt.tscn")
+var tutorial_preload = preload("res://scenes/tutorial.tscn")
+
 
 var master_bus_index := AudioServer.get_bus_index("Master")
 var music_bus_index := AudioServer.get_bus_index("Music")
@@ -239,6 +241,11 @@ func add_points(y_value: int, hold_strength: int) -> void:
 		$CanvasLayer/GameGUI.set_score(int(score))
 
 func _on_main_menu_play_pressed() -> void:
+	var instance = tutorial_preload.instantiate()
+	instance.connect("playPressed", _on_tutorial_clear)
+	$CanvasLayer.add_child(instance)
+	
+func _on_tutorial_clear() -> void:
 	reset_play()
 
 func _on_main_menu_leaderboard_pressed() -> void:

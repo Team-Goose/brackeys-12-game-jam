@@ -1,0 +1,130 @@
+[gd_scene load_steps=12 format=3 uid="uid://drgwd28u5lpt8"]
+
+[ext_resource type="Theme" uid="uid://ti5t14mpo4hx" path="res://assets/other_menu_theme.tres" id="1_0ajls"]
+[ext_resource type="Theme" uid="uid://cr5mj0hosrwmu" path="res://assets/main_menu_theme.tres" id="1_ecscw"]
+[ext_resource type="Script" path="res://scenes/tutorial.gd" id="2_5ibhy"]
+[ext_resource type="Texture2D" uid="uid://b0lgp2tfhmg47" path="res://assets/title_screen.png" id="2_jddkr"]
+[ext_resource type="Texture2D" uid="uid://cqmv84agfojlt" path="res://assets/settings_screen.png" id="3_hcf1l"]
+[ext_resource type="Texture2D" uid="uid://con3f47rmbvgh" path="res://assets/tree_sprite_sheet.png" id="4_v8g8f"]
+[ext_resource type="Texture2D" uid="uid://d2pf6a51lffru" path="res://assets/main_menu_button_3.png" id="5_uiwku"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v3w1p"]
+font_size = 12
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysyx5"]
+atlas = ExtResource("4_v8g8f")
+region = Rect2(0, 0, 32.8414, 32.9105)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l30e1"]
+atlas = ExtResource("4_v8g8f")
+region = Rect2(192.486, 0.379604, 32.2962, 32.1611)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tobo"]
+atlas = ExtResource("4_v8g8f")
+region = Rect2(191.81, 31.5948, 32.7016, 32.1611)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ecscw")
+script = ExtResource("2_5ibhy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 648.0
+texture = ExtResource("2_jddkr")
+
+[node name="SettingsScreen" type="Sprite2D" parent="TextureRect"]
+texture_filter = 1
+position = Vector2(578, 326)
+scale = Vector2(3.6, 3.61111)
+texture = ExtResource("3_hcf1l")
+
+[node name="Text" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 100.0
+offset_right = 1100.0
+offset_bottom = 332.0
+text = "ribbeting climb. 
+Helping a little frog go to the jungle 
+tops to see the world!
+
+you get good holds by clicking on 
+bigger mushroom clumps:
+
+
+ 
+                        Bad            Good          Best
+
+  Earn a point multiplier for each day
+  you complete!
+
+
+   When the music and weather pick up,
+   MAKE SURE YOU GRAB A GOOD HOLD!
+
+  survive the storm and see if
+  you can get to the jungle canopy."
+label_settings = SubResource("LabelSettings_v3w1p")
+
+[node name="Wood" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 207.0
+offset_right = 516.0
+offset_bottom = 239.0
+texture = SubResource("AtlasTexture_ysyx5")
+
+[node name="Wood2" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 551.0
+offset_top = 207.0
+offset_right = 583.0
+offset_bottom = 239.0
+texture = SubResource("AtlasTexture_ysyx5")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/Wood2"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_l30e1")
+
+[node name="Wood3" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 617.0
+offset_top = 207.0
+offset_right = 649.0
+offset_bottom = 239.0
+texture = SubResource("AtlasTexture_ysyx5")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/Wood3"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 32.0
+offset_bottom = 33.0
+texture = SubResource("AtlasTexture_5tobo")
+
+[node name="MainMenuButton1" type="Sprite2D" parent="TextureRect"]
+texture_filter = 1
+position = Vector2(596, 505)
+scale = Vector2(1.40541, 1.76923)
+texture = ExtResource("5_uiwku")
+
+[node name="Button" type="Button" parent="TextureRect/MainMenuButton1"]
+offset_left = -49.8077
+offset_top = -17.5217
+offset_right = 54.1923
+offset_bottom = 23.4783
+theme = ExtResource("1_0ajls")
+theme_override_font_sizes/font_size = 17
+text = "PLAY"
+flat = true
+
+[connection signal="pressed" from="TextureRect/MainMenuButton1/Button" to="." method="_on_button_pressed"]
