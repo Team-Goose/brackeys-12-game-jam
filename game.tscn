@@ -53,8 +53,14 @@ process_mode = 1
 wait_time = 120.0
 one_shot = true
 
+[node name="GetHighScoreHTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="SetHighScoreHTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="leaderboard_pressed" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_leaderboard_pressed"]
 [connection signal="options_pressed" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_options_pressed"]
 [connection signal="play_pressed" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_play_pressed"]
 [connection signal="quit_pressed" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_quit_pressed"]
 [connection signal="finished" from="Music/Tambourine" to="." method="_on_tambourine_finished"]
 [connection signal="timeout" from="DayTimer" to="." method="_on_day_finished"]
+[connection signal="request_completed" from="GetHighScoreHTTPRequest" to="." method="_on_get_high_score_request_completed"]

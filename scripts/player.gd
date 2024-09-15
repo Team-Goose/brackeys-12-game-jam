@@ -17,7 +17,7 @@ signal game_over
 
 var active_hand_left := true
 var storm_strength := 0
-var stamina := 0.0
+var stamina := 3.0
 var player_alive := true
 var go_direction := Vector2((randf()-0.5) * 500.0, -500)
 var last_pos := Vector2(0.0, 0.0)
@@ -35,8 +35,13 @@ func _input(event: InputEvent) -> void:
 		var result := get_world_2d().direct_space_state.intersect_point(params, 1)
 		if result.size() == 1:
 			var tree_cell: TreeCell = result.front().collider.get_parent()
-			stamina = (float(tree_cell.hold_strength) / float(storm_strength)) * (stamina if stamina > 0.0 else 1.0)
+			
+			stamina = (float(tree_cell.hold_strength) / float(storm_strength)) * stamina + 0.1
+			print(str(stamina).pad_decimals(2))
+			
 			timer.start(stamina)
+			if tree_cell.hold_strength >= storm_strength: timer.stop()
+			
 			if active_hand_left:
 				lhand.global_position = tree_cell.global_position
 			else:
