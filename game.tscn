@@ -57,6 +57,7 @@ one_shot = true
 
 [node name="SetHighScoreHTTPRequest" type="HTTPRequest" parent="."]
 
+[connection signal="credits_pressed" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_credits_pressed"]
 [connection signal="leaderboard_pressed" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_leaderboard_pressed"]
 [connection signal="options_pressed" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_options_pressed"]
 [connection signal="play_pressed" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_play_pressed"]

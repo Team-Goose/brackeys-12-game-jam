@@ -151,7 +151,24 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("1_qvmq3")
 flat = true
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 558.0
+offset_top = 607.0
+offset_right = 632.0
+offset_bottom = 647.0
+texture = ExtResource("9_l0a03")
+
+[node name="CreditsButton" type="Button" parent="TextureRect"]
+offset_left = 8.0
+offset_top = 3.99997
+offset_right = 71.0
+offset_bottom = 35.0
+text = "Credits"
+flat = true
+
+[connection signal="credits_pressed" from="." to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="PlayButtonImage/PlayButton" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="LeaderboardButtonImage/LeaderboardButton" to="." method="_on_leaderboard_pressed"]
 [connection signal="pressed" from="QuitButtonImage/QuitButton" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="SettingsButtonImage/SettingsButton" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="TextureRect/CreditsButton" to="." method="_on_credits_button_pressed"]

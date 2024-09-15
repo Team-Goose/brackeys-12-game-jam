@@ -11,7 +11,7 @@ var options_menu_preload = preload('res://scenes/options_menu.tscn')
 var leaderboard_preload = preload('res://scenes/leaderboard.tscn')
 var username_prompt_preload = preload("res://scenes/username_prompt.tscn")
 var tutorial_preload = preload("res://scenes/tutorial.tscn")
-
+var credits_preload = preload("res://scenes/Credits.tscn")
 
 var master_bus_index := AudioServer.get_bus_index("Master")
 var music_bus_index := AudioServer.get_bus_index("Music")
@@ -255,6 +255,10 @@ func _on_main_menu_leaderboard_pressed() -> void:
 func _on_main_menu_options_pressed() -> void:
 	var instance = options_menu_preload.instantiate()
 	instance.connect('save_options', save_game)
+	$CanvasLayer.add_child(instance)
+	
+func _on_main_menu_credits_pressed() -> void:
+	var instance = credits_preload.instantiate()
 	$CanvasLayer.add_child(instance)
 
 func _on_main_menu_quit_pressed() -> void:
