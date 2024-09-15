@@ -272,6 +272,7 @@ func reset_play(reset_score: bool = false, increase_day: bool = false) -> void:
 	thm_instance.connect('cell_r_clicked', _on_cell_r_clicked)
 	thm_instance.get_node('Player').connect('storm_strength_changed', _on_storm_strength_changed)
 	thm_instance.get_node('Player').connect('game_over', _on_game_over)
+	thm_instance.set_storm_day(day)
 	add_child(thm_instance)
 	var gui_instance: GameGUI = game_gui_preload.instantiate()
 	$CanvasLayer.add_child(gui_instance)
@@ -287,6 +288,10 @@ func reset_play(reset_score: bool = false, increase_day: bool = false) -> void:
 
 func _on_storm_strength_changed(val: int) -> void:
 	storm_strength = val
+	if val >= 8:
+		$CanvasLayer/GameGUI.show_warning()
+	else:
+		$CanvasLayer/GameGUI.hide_warning()
 
 func _on_tambourine_finished() -> void:
 	%Tambourine.play()

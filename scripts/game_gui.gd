@@ -11,6 +11,13 @@ func _process(_delta: float) -> void:
 	var seconds_left: int = 120 - ((current_time - start_time) / 1000)
 	if seconds_left >= 0:
 		%TimeLabel.text = str(seconds_left) + ' seconds left today!'
+	%TyphoonWarningLabel.modulate.a = (sin(current_time / 1000.0 * 2) + 1.0) / 2.0
+
+func show_warning() -> void:
+	%TyphoonWarningLabel.visible = true
+
+func hide_warning() -> void:
+	%TyphoonWarningLabel.visible = false
 
 func set_score(score: int = 0) -> void:
 	%ScoreLabel.text = 'Score: ' + str(score)

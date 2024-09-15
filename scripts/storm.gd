@@ -2,8 +2,9 @@ class_name Storm extends Node2D
 
 signal storm_strength(val: int)
 
-var time_start = 0
-var wind = Vector2.ZERO
+var time_start := 0
+var wind := Vector2.ZERO
+var day := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,15 +12,32 @@ func _ready():
 	%RainParticles.intensity_off()
 	%SwirlingLeafParticles.intensity_off()
 
+func set_day(new_day: int) -> void:
+	day = new_day
+
 func _physics_process(delta: float) -> void:
 	var time_now = Time.get_ticks_msec() / 1000.0
 	var time_elapsed = time_now - time_start
-	var wind_strength = (5 * sin(time_elapsed / 60.0)) + 5 # range from 0 to 10 on a sine curve
+	var wind_strength = get_wind_strength(time_elapsed)
 	var wind_direction = Vector2.RIGHT
 	var particle_pivot_rotation = 90 * sin(time_elapsed / 10.0) # range from -90 to 90 on a sine curve
 	%ParticlePivot.global_rotation_degrees = particle_pivot_rotation
 	set_particle_intensity(wind_strength)
 	wind = wind_strength * wind_direction
+
+func get_wind_strength(sec_elapsed) -> float:
+	match day:
+		1:
+			return 3.2 - pow(10, 0.5 - (sec_elapsed / 40.0))
+		2:
+			return 5.2 - pow(12, 0.5 - (sec_elapsed / 15.0))
+		3:
+			return 7.2 - pow(15, 0.5 - (sec_elapsed / 20.0))
+		4:
+			return 9.2 - pow(80, 0.5 - (sec_elapsed / 50.0))
+		_:
+			var divisor: float = max(60.0 - day, 0.5)
+			return (5 * sin(sec_elapsed / divisor)) + 5 # range from 0 to 10 on a sine curve with frequency determined by day
 
 func set_particle_intensity(wind_strength: float) -> void:
 	if wind_strength < 1:

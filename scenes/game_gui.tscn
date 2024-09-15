@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://o2gfrhokrf2k"]
+[gd_scene load_steps=5 format=3 uid="uid://o2gfrhokrf2k"]
 
 [ext_resource type="Theme" uid="uid://cr5mj0hosrwmu" path="res://assets/main_menu_theme.tres" id="1_8u4c8"]
 [ext_resource type="Script" path="res://scripts/game_gui.gd" id="2_7cj7f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nqs6t"]
 font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_io4eb"]
+font_size = 24
+font_color = Color(1, 0.349096, 0.32517, 1)
 
 [node name="GameGUI" type="Control"]
 process_mode = 3
@@ -75,3 +79,28 @@ layout_mode = 2
 text = "Day 1"
 label_settings = SubResource("LabelSettings_nqs6t")
 horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="TyphoonWarningLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "TYPHOON WARNING!"
+label_settings = SubResource("LabelSettings_io4eb")
+
+[node name="BoxContainer" type="BoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
