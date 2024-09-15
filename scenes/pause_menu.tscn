@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://6flb8j1cfct4"]
+[gd_scene load_steps=4 format=3 uid="uid://6flb8j1cfct4"]
 
 [ext_resource type="Theme" uid="uid://ti5t14mpo4hx" path="res://assets/other_menu_theme.tres" id="1_wfucw"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="2_n2oor"]
 
-[sub_resource type="SystemFont" id="SystemFont_40rcn"]
-subpixel_positioning = 0
-
 [sub_resource type="LabelSettings" id="LabelSettings_niw8j"]
-font = SubResource("SystemFont_40rcn")
 font_size = 64
 
 [node name="PauseMenu" type="Control"]
@@ -87,7 +83,7 @@ layout_mode = 2
 [node name="QuitToDesktopButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-text = "Quit to Desktop :("
+text = "Quit to Desktop"
 
 [node name="BoxContainer2" type="BoxContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(300, 0)

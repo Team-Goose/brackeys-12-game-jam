@@ -99,7 +99,7 @@ layout_mode = 2
 [node name="QuitToDesktopButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-text = "Quit to Desktop :("
+text = "Quit to Desktop"
 
 [node name="BoxContainer2" type="BoxContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(300, 0)
